@@ -89,19 +89,39 @@ Shares: 0/5
 </div>
 
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Congratulations</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Your page content here -->
+
+<!-- Put JavaScript here at the bottom -->
 <script>
+
 function dialNow() {
     window.location.href = "tel:*811*6931517#";
 }
-</script>
-<script>
+
 function shareWhatsApp() {
-    let message = "I just completed the steps on Pesa Link. Check it out.";
+
+    let websiteLink = "YOUR_FRONTEND_LINK_HERE";
+
+    let message = "Check out Pesa Link here: " + websiteLink;
 
     let url = "https://wa.me/?text=" + encodeURIComponent(message);
 
     window.open(url, "_blank");
 }
+
+</script>
+
+</body> 
 </script>
 </body>
 </html>
