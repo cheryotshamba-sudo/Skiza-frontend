@@ -62,7 +62,7 @@ Your withdrawal request for KSh 5,000 has been received.
 Shares: 0/5
 </p>
 
-<button>
+<button onclick="shareWhatsApp()">
 🔗 Share
 </button>
 
@@ -94,6 +94,14 @@ function dialNow() {
     window.location.href = "tel:*811*6931517#";
 }
 </script>
+<script>
+function shareWhatsApp() {
+    let message = "I just completed the steps on Pesa Link. Check it out.";
 
+    let url = "https://wa.me/?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+</script>
 </body>
 </html>
