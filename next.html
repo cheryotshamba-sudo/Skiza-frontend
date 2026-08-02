@@ -52,13 +52,13 @@ Your withdrawal request for KSh 5,000 has been received.
 </div>
 
 
-<div class="step disabled">
+<div class="step">
 
 <h3>
 2. Share with 5 contacts
 </h3>
 
-<p>
+<p id="shareCount">
 Shares: 0/5
 </p>
 
@@ -89,39 +89,32 @@ Shares: 0/5
 </div>
 
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Congratulations</title>
-
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<!-- Your page content here -->
-
-<!-- Put JavaScript here at the bottom -->
 <script>
+
+let shares = 0;
 
 function dialNow() {
     window.location.href = "tel:*811*6931517#";
 }
 
+
 function shareWhatsApp() {
 
-    let websiteLink = "YOUR_FRONTEND_LINK_HERE";
+    let websiteLink = "https://skiza-kenya.onrender.com";
 
     let message = "Check out Pesa Link here: " + websiteLink;
 
     let url = "https://wa.me/?text=" + encodeURIComponent(message);
 
     window.open(url, "_blank");
+
+    shares++;
+
+    document.getElementById("shareCount").innerHTML =
+    "Shares: " + shares + "/5";
 }
 
 </script>
 
-</body> 
-</script>
 </body>
 </html>
