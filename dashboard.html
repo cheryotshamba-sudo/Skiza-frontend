@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Skiza Admin Dashboard</title>
+
+<link rel="stylesheet" href="dashboard.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">
+
+<i class="fas fa-chart-line"></i>
+
+<h2>SKIZA</h2>
+
+</div>
+
+<ul>
+
+<li class="active">
+<i class="fas fa-home"></i>
+Dashboard
+</li>
+
+<li>
+<i class="fas fa-images"></i>
+Uploads
+</li>
+
+<li>
+<i class="fas fa-chart-bar"></i>
+Analytics
+</li>
+
+<li>
+<i class="fas fa-cog"></i>
+Settings
+</li>
+
+<li id="logoutBtn">
+<i class="fas fa-right-from-bracket"></i>
+Logout
+</li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<div>
+
+<h1>Welcome back 👋</h1>
+
+<p>Skiza Admin Dashboard</p>
+
+</div>
+
+<button id="refreshBtn">
+
+<i class="fas fa-rotate"></i>
+
+Refresh
+
+</button>
+
+</div>
+
+<div class="cards">
+
+<div class="card green">
+
+<h3>Total Uploads</h3>
+
+<h1 id="totalUploads">0</h1>
+
+</div>
+
+<div class="card blue">
+
+<h3>Today</h3>
+
+<h1 id="todayUploads">0</h1>
+
+</div>
+
+<div class="card orange">
+
+<h3>This Week</h3>
+
+<h1 id="weekUploads">0</h1>
+
+</div>
+
+<div class="card purple">
+
+<h3>Status</h3>
+
+<h1>Online</h1>
+
+</div>
+
+</div>
+
+<h2 class="sectionTitle">
+
+Latest Uploads
+
+</h2>
+
+<div id="gallery" class="gallery">
+
+Loading...
+
+</div>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+  </html>
