@@ -3,30 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Skiza Admin Dashboard</title>
+
 <link rel="stylesheet" href="admin.css">
+
 </head>
+
 <body>
 
 <div class="container">
 
-    <header>
-        <h1>📊 Skiza Admin Dashboard</h1>
-        <button id="logoutBtn">Logout</button>
-    </header>
+<header>
 
-    <div class="stats-card">
-        <h2>Total Uploads</h2>
-        <p id="totalUploads">Loading...</p>
-    </div>
+<h1>📊 Skiza Admin Dashboard</h1>
 
-    <h2>Uploaded Screenshots</h2>
+<button id="logoutBtn">Logout</button>
 
-    <div id="gallery" class="gallery">
-        Loading screenshots...
-    </div>
+</header>
+
+
+<div class="stats-grid">
+
+
+<div class="dashboard-card">
+
+<h3>📸 Total Uploads</h3>
+
+<p id="totalUploads">Loading...</p>
 
 </div>
+
+
+
+<div class="dashboard-card">
+
+<h3>🟢 Backend Status</h3>
+
+<p>Online</p>
+
+</div>
+
+
+
+<div class="dashboard-card">
+
+<h3>☁️ Cloudinary</h3>
+
+<p>Connected</p>
+
+</div>
+
+
+</div>
+
+
+
+<h2>Uploaded Screenshots</h2>
+
+
+<div id="gallery" class="gallery">
+
+Loading screenshots...
+
+</div>
+
+
+</div>
+
 
 <script src="admin.js"></script>
 
