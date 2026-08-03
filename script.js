@@ -1,17 +1,14 @@
 const video = document.getElementById("promoVideo");
+const playOverlay = document.getElementById("playOverlay");
+const playBtn = document.getElementById("playBtn");
 
-// Start muted automatically
-video.muted = true;
-
-video.play().catch(err => {
-    console.log(err);
-});
-
-// First tap anywhere turns on sound
-document.addEventListener("click", () => {
+playBtn.addEventListener("click", function () {
     video.muted = false;
     video.volume = 1;
-}, { once: true });
+    video.play();
+
+    playOverlay.style.display = "none";
+});
 
 function startNow() {
     window.location.href = "register.html";
