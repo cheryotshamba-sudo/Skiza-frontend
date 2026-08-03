@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Pesa Link</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesa Link</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<video id="promoVideo" playsinline>
-    <source src="video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+    <video id="promoVideo" autoplay muted playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-<div class="overlay">
+    <div class="overlay">
 
-    <div class="logo">
-        Pesa Link
+        <div class="logo">
+            Pesa Link
+        </div>
+
+        <h1>Hatua Moja Tu Inakutenganisha na KSh 5,000!</h1>
+
+        <p class="subtitle">
+            Tazama video hii, kisha bonyeza <strong>START NOW</strong> kuendelea.
+        </p>
+
+        <button class="start-btn" onclick="startNow()">
+            START NOW
+        </button>
+
     </div>
 
-    <h1>Hatua Moja Tu Inakutenganisha na KSh 5,000!</h1>
+    <script src="script.js"></script>
 
-    <p
+</body>
+</html>
