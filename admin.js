@@ -14,6 +14,7 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
 });
 
 
+
 // Load total uploads
 async function loadStats() {
 
@@ -37,6 +38,41 @@ async function loadStats() {
     }
 
 }
+
+
+
+// Load today and this week uploads
+async function loadDetailedStats() {
+
+    try {
+
+        const response = await fetch(
+            "https://skiza-backend.onrender.com/stats-details"
+        );
+
+        const data = await response.json();
+
+
+        document.getElementById("todayUploads").textContent =
+        data.todayUploads;
+
+
+        document.getElementById("weekUploads").textContent =
+        data.weekUploads;
+
+
+    } catch(error) {
+
+
+        document.getElementById("todayUploads").textContent = "0";
+
+        document.getElementById("weekUploads").textContent = "0";
+
+
+    }
+
+}
+
 
 
 
@@ -108,6 +144,11 @@ async function loadUploads() {
 
 
 
+
+// Start dashboard
+
 loadStats();
+
+loadDetailedStats();
 
 loadUploads();
