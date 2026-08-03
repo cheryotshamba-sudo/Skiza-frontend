@@ -23,7 +23,7 @@ form.addEventListener("submit", async (e) => {
 
         if (data.success) {
             localStorage.setItem("adminLoggedIn", "true");
-            window.location.href = "admin.html";
+            window.location.href = "dashboard.html";
         } else {
             message.textContent = data.message;
         }
