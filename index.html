@@ -12,7 +12,12 @@
 
 <body>
 
-<div class="container">
+<video id="promoVideo" autoplay muted playsinline>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<div class="overlay">
 
     <div class="logo">
         Pesa Link
@@ -23,15 +28,6 @@
     <p class="subtitle">
         Tazama video hii sasa, kisha bonyeza <strong>START NOW</strong> kuendelea.
     </p>
-
-    <div class="video-box">
-
-        <video controls playsinline>
-            <source src="video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-
-    </div>
 
     <button class="start-btn" onclick="startNow()">
         START NOW
