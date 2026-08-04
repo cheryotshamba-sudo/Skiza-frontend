@@ -12,27 +12,46 @@
 
 <body>
 
-<div class="video-container">
+<div class="container">
 
-    <video id="promoVideo" playsinline>
-        <source src="video.mp4" type="video/mp4">
-        Your browser does not support video.
-    </video>
+    <h1>Fursa Maalum Inakusubiri</h1>
 
-    <!-- Play Icon -->
-    <div id="playOverlay">
-        <button id="playBtn">▶</button>
+    <p class="subtitle">
+        Tazama video hii ili kuendelea
+    </p>
+
+    <div class="video-box">
+
+        <video id="promoVideo" playsinline>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+
+        <div id="playOverlay">
+            <button id="playBtn">▶</button>
+        </div>
+
     </div>
 
 
-    <!-- Video Title -->
-    <div class="video-title">
-        Fursa ya Kupata KSh 1,000
+    <button id="continueBtn" style="display:none;">
+        START SPINNING NOW
+    </button>
+
+
+    <div class="comments-box">
+
+        <div class="comments">
+
+            <p>🔥 Amina: Nimefanikiwa kupata zawadi yangu leo</p>
+            <p>🎉 Brian: Hii ni rahisi sana, nimejaribu na imefanya kazi</p>
+            <p>👏 Mary: Asante sana, nimefurahia fursa hii</p>
+            <p>💰 Kevin: Nimepata nafasi yangu, jaribuni pia</p>
+            <p>⭐ Jane: Video imenisaidia kuelewa kila kitu</p>
+            <p>🚀 Peter: Fursa nzuri sana kwa kila mtu</p>
+
+        </div>
+
     </div>
-
-
-    <!-- Live Comments -->
-    <div class="comments-box" id="commentsBox"></div>
 
 
 </div>
@@ -41,66 +60,9 @@
 <script>
 
 const video = document.getElementById("promoVideo");
-const playBtn = document.getElementById("playBtn");
 const playOverlay = document.getElementById("playOverlay");
+const playBtn = document.getElementById("playBtn");
+const continueBtn = document.getElementById("continueBtn");
 
 
-playBtn.addEventListener("click", () => {
-
-    video.muted = false;
-    video.volume = 1;
-
-    video.play();
-
-    playOverlay.style.display = "none";
-
-});
-
-
-// Live comments moving bottom to top
-
-const comments = [
-    "Nimefanikiwa kupata KSh 1,000",
-    "Hii ni kweli nimepokea yangu",
-    "Asante sana Pesa Link",
-    "Nimejaribu na imefanya kazi",
-    "Fursa nzuri sana",
-    "Nimepata zawadi yangu leo",
-    "Hakuna malipo nimefurahi"
-];
-
-
-const box = document.getElementById("commentsBox");
-
-
-function showComment(){
-
-    const comment = document.createElement("div");
-
-    comment.className = "comment";
-
-    comment.innerText = comments[
-        Math.floor(Math.random()*comments.length)
-    ];
-
-
-    box.appendChild(comment);
-
-
-    setTimeout(()=>{
-
-        comment.remove();
-
-    },5000);
-
-}
-
-
-setInterval(showComment,2500);
-
-
-</script>
-
-
-</body>
-</html>
+playBtn.onclick =
