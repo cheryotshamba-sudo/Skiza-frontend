@@ -265,7 +265,10 @@ spinBtn.addEventListener("click", function () {
     }, 5000);
 
 });
-
+function goToResult() {
+    localStorage.setItem("winningAmount", prizes[prizeIndex]);
+    window.location.href = "result.html";
+    }
 </script>
 
 </body>
