@@ -1,25 +1,43 @@
 * {
-    box-sizing: border-box;
-}
-
-html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    overflow: hidden;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
+body {
+    background: #f5f5f5;
+    color: #222;
+}
 
-.video-container {
-    position: relative;
+.container {
     width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 15px;
+}
+
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+
+.video-box {
+    width: 100%;
+    height: 65vh;
+    background: black;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
 
@@ -31,7 +49,6 @@ video {
 }
 
 
-/* Play button only */
 #playOverlay {
     position: absolute;
     inset: 0;
@@ -42,71 +59,69 @@ video {
 
 
 #playBtn {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     border: none;
     background: rgba(255,255,255,0.9);
-    font-size: 32px;
+    font-size: 35px;
     cursor: pointer;
 }
 
 
-/* Video title */
-.video-title {
-    position: absolute;
-    top: 25px;
-    left: 50%;
-    transform: translateX(-50%);
+#continueBtn {
+
+    margin-top: 15px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #0b8f3c;
     color: white;
-    font-size: 22px;
+    font-size: 17px;
     font-weight: bold;
-    text-align: center;
-    z-index: 2;
+    cursor: pointer;
+
 }
 
 
-/* Moving comments */
 .comments-box {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 180px;
+
+    margin-top: 15px;
+    height: 130px;
     overflow: hidden;
-    z-index: 3;
+    background: white;
+    border-radius: 12px;
+    position: relative;
+
 }
 
 
-.comment {
+.comments {
+
     position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,0,0,0.65);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 20px;
-    font-size: 16px;
-    white-space: nowrap;
-    animation: moveUp 5s linear forwards;
+    width: 100%;
+    animation: moveComments 18s linear infinite;
+
 }
 
 
-@keyframes moveUp {
+.comments p {
+
+    padding: 12px;
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+
+}
+
+
+@keyframes moveComments {
 
     from {
-        bottom: -50px;
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 1;
+        transform: translateY(130px);
     }
 
     to {
-        bottom: 180px;
-        opacity: 0;
+        transform: translateY(-350px);
     }
 
 }
