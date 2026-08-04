@@ -22,9 +22,11 @@ body {
 }
 
 .caption h1 {
-    font-size: 30px;
+    font-size: 38px;
     margin: 0;
-    font-weight: 900;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
 }
 
 .caption p {
