@@ -254,7 +254,9 @@ spinBtn.addEventListener("click", function () {
 
     prizeIndex = Math.floor(Math.random() * prizes.length);
 
-    currentRotation += (360 * 6) + (prizeIndex * 30) + 15;
+let stopAngle = (360 - (prizeIndex * 30)) - 15;
+
+currentRotation += (360 * 6) + stopAngle;
 
     wheel.style.transition = "transform 5s ease-out";
     wheel.style.transform = `rotate(${currentRotation}deg)`;
