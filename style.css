@@ -1,135 +1,112 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-html,body{
-    width:100%;
-    min-height:100%;
-    font-family:Arial,sans-serif;
-    background:#111;
-    color:#fff;
-    overflow-x:hidden;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
-.container{
-    width:100%;
-    max-width:600px;
-    margin:0 auto;
-    padding:25px 15px 40px;
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Top Caption */
 
-.hero-text{
-    text-align:center;
-    margin-bottom:20px;
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: black;
 }
 
-.hero-text h1{
-    font-size:36px;
-    font-weight:800;
-    line-height:1.2;
-    color:#fff;
-    margin-bottom:12px;
+
+/* Play button only */
+#playOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.hero-text p{
-    font-size:20px;
-    color:#ddd;
-    line-height:1.5;
+
+#playBtn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    font-size: 32px;
+    cursor: pointer;
 }
 
-.hero-text strong{
-    color:#22c55e;
+
+/* Video title */
+.video-title {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2;
 }
 
-/* Card */
 
-.card{
-    background:#111;
+/* Moving comments */
+.comments-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    z-index: 3;
 }
 
-/* Video */
 
-.video-container{
-    position:relative;
-    width:100%;
+.comment {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.65);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    white-space: nowrap;
+    animation: moveUp 5s linear forwards;
 }
 
-#promoVideo{
-    width:100%;
-    height:320px;
-    object-fit:cover;
-    border-radius:22px;
-    display:block;
-    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+@keyframes moveUp {
+
+    from {
+        bottom: -50px;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    to {
+        bottom: 180px;
+        opacity: 0;
+    }
+
 }
-
-/* Play Overlay */
-
-#playOverlay{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.45);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    border-radius:22px;
-}
-
-#playBtn{
-    width:90px;
-    height:90px;
-    border:none;
-    border-radius:50%;
-    background:#fff;
-    color:#16a34a;
-    font-size:42px;
-    cursor:pointer;
-}
-
-#playOverlay p{
-    margin-top:15px;
-    color:#fff;
-    font-size:20px;
-    font-weight:bold;
-}
-
-/* Button */
-
-.start-btn{
-    width:100%;
-    margin-top:20px;
-    border:none;
-    border-radius:50px;
-    padding:18px;
-    font-size:24px;
-    font-weight:bold;
-    color:#fff;
-    cursor:pointer;
-    background:linear-gradient(90deg,#16a34a,#22c55e);
-}
-
-/* Live Box */
-
-.live-box{
-    margin-top:20px;
-    text-align:center;
-}
-
-#liveText{
-    font-size:18px;
-    color:#facc15;
-}
-
-/* Terms */
-
-.terms{
-    margin-top:15px;
-    text-align
