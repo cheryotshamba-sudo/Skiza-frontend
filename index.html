@@ -23,7 +23,7 @@
 
     <div class="video-container">
 
-        <video id="promoVideo" playsinline>
+        <video id="promoVideo" playsinline preload="metadata">
             <source src="video.mp4" type="video/mp4">
             Browser yako haitumii video
         </video>
@@ -76,9 +76,20 @@ const continueBtn = document.getElementById("continueBtn");
 
 playBtn.addEventListener("click", function(){
 
-    video.play();
     video.muted = false;
-    playOverlay.style.display = "none";
+
+    video.play()
+    .then(function(){
+        playOverlay.style.display = "none";
+    })
+    .catch(function(){
+
+        video.muted = true;
+
+        video.play();
+
+        playOverlay.style.display = "none";
+    });
 
 });
 
