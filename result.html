@@ -7,43 +7,90 @@
 <title>Result</title>
 
 <style>
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f8ff;
-    text-align: center;
-    padding: 40px 20px;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f8ff;
+    padding:25px 15px;
 }
 
 .card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    max-width: 400px;
-    margin: auto;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    max-width:400px;
+    margin:auto;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
 }
 
 h1 {
-    color: #0b7a3d;
+    color:#0b7a3d;
+    font-size:32px;
+}
+
+.subtitle{
+    font-size:18px;
+    color:#555;
 }
 
 .reward {
-    font-size: 35px;
-    font-weight: bold;
-    margin: 20px 0;
+    font-size:38px;
+    font-weight:bold;
+    color:#0b7a3d;
+    margin:20px 0;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:17px;
+    box-sizing:border-box;
+    margin:15px 0;
 }
 
 button {
-    width: 100%;
-    padding: 15px;
-    background: #0b7a3d;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 18px;
-    font-weight: bold;
+    width:100%;
+    padding:15px;
+    background:#00c853;
+    color:white;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
 }
+
+.withdrawals{
+    margin-top:30px;
+    text-align:left;
+}
+
+.withdrawals h2{
+    text-align:center;
+    font-size:22px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+.success{
+    color:#0b7a3d;
+    font-weight:bold;
+}
+
+.pending{
+    color:#f59e0b;
+    font-weight:bold;
+}
+
 </style>
 
 </head>
@@ -54,21 +101,71 @@ button {
 
 <h1>🎉 Congratulations!</h1>
 
-<p>You have completed the spin.</p>
+<p class="subtitle">
+You've won an amazing prize
+</p>
 
-<div class="reward">
-KSh 5,000
+<div class="reward" id="winningAmount">
+KSh 300
 </div>
 
-<p>Continue to the next step.</p>
+<p>Enter your phone number to withdraw</p>
 
-<a href="next.html">
-    <button>
-    CONTINUE
-    </button>
-</a>
+<input type="tel" placeholder="Enter Safaricom number (07...)">
+
+<button>
+Request Withdrawal
+</button>
+
+
+<div class="withdrawals">
+
+<h2>📊 Recent Withdrawals</h2>
+
+<div class="row">
+<span>0717****8<br>KSh 2,332</span>
+<span class="success">✅ M-PESA SUCCESS</span>
+</div>
+
+<div class="row">
+<span>0768****1<br>KSh 2,316</span>
+<span class="pending">⏳ PENDING</span>
+</div>
+
+<div class="row">
+<span>0768****2<br>KSh 2,835</span>
+<span class="pending">⏳ PENDING</span>
+</div>
+
+<div class="row">
+<span>0704****3<br>KSh 3,869</span>
+<span class="success">✅ M-PESA SUCCESS</span>
+</div>
+
+<div class="row">
+<span>0795****4<br>KSh 2,824</span>
+<span class="pending">⏳ PENDING</span>
+</div>
+
+<div class="row">
+<span>0114****0<br>KSh 3,550</span>
+<span class="pending">⏳ PENDING</span>
+</div>
 
 </div>
+
+</div>
+
+
+<script>
+
+const amount = localStorage.getItem("winningAmount");
+
+if(amount){
+    document.getElementById("winningAmount").textContent = amount;
+}
+
+</script>
 
 </body>
 </html>
