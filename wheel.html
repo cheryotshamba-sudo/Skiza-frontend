@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PesaCash - Spin & Win</title>
+<title>PesaCash Spin Wheel</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -33,12 +32,14 @@ p{
     color:#cbd5e1;
 }
 
+
 .wheel-wrapper{
     position:relative;
-    width:320px;
-    height:320px;
+    width:330px;
+    height:330px;
     margin:40px auto;
 }
+
 
 .pointer{
     width:0;
@@ -47,188 +48,171 @@ p{
     border-right:18px solid transparent;
     border-top:35px solid red;
     position:absolute;
+    top:-12px;
     left:50%;
     transform:translateX(-50%);
-    top:-10px;
     z-index:5;
 }
 
 
 .wheel{
-
-    width:320px;
-    height:320px;
+    width:330px;
+    height:330px;
     border-radius:50%;
     border:8px solid white;
-
     position:relative;
-
-    transition:transform 5s cubic-bezier(.17,.67,.83,.67);
 
     background:
     conic-gradient(
-    #16a34a 0deg 60deg,
-    #facc15 60deg 120deg,
-    #2563eb 120deg 180deg,
-    #f97316 180deg 240deg,
-    #9333ea 240deg 300deg,
-    #dc2626 300deg 360deg
+    #16a34a 0deg 30deg,
+    #facc15 30deg 60deg,
+    #2563eb 60deg 90deg,
+    #f97316 90deg 120deg,
+    #9333ea 120deg 150deg,
+    #dc2626 150deg 180deg,
+    #14b8a6 180deg 210deg,
+    #e11d48 210deg 240deg,
+    #84cc16 240deg 270deg,
+    #0ea5e9 270deg 300deg,
+    #f43f5e 300deg 330deg,
+    #a855f7 330deg 360deg
     );
+
+    transition:transform 5s cubic-bezier(.17,.67,.83,.67);
 }
 
 
 .amount{
-
     position:absolute;
     width:100%;
     height:100%;
-
     display:flex;
     justify-content:center;
     align-items:flex-start;
-
     padding-top:35px;
-
-    font-size:16px;
+    font-size:14px;
     font-weight:900;
     color:white;
-
     text-shadow:1px 1px 3px black;
-
 }
 
 
-.amount1{transform:rotate(30deg);}
-.amount2{transform:rotate(90deg);}
-.amount3{transform:rotate(150deg);}
-.amount4{transform:rotate(210deg);}
-.amount5{transform:rotate(270deg);}
-.amount6{transform:rotate(330deg);}
-
+.a1{transform:rotate(15deg);}
+.a2{transform:rotate(45deg);}
+.a3{transform:rotate(75deg);}
+.a4{transform:rotate(105deg);}
+.a5{transform:rotate(135deg);}
+.a6{transform:rotate(165deg);}
+.a7{transform:rotate(195deg);}
+.a8{transform:rotate(225deg);}
+.a9{transform:rotate(255deg);}
+.a10{transform:rotate(285deg);}
+.a11{transform:rotate(315deg);}
+.a12{transform:rotate(345deg);}
 
 
 button{
-
     background:#00c853;
     color:white;
-
     border:none;
-
     padding:16px 45px;
-
     font-size:22px;
-
     font-weight:900;
-
     border-radius:50px;
-
     cursor:pointer;
-
     box-shadow:0 0 15px #00c853;
-
 }
 
 
+/* Winner popup */
 
-.result{
-
-    margin-top:25px;
-
-    font-size:24px;
-
+.popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    color:#111;
+    width:85%;
+    max-width:350px;
+    padding:35px 20px;
+    border-radius:20px;
+    font-size:26px;
     font-weight:900;
-
     display:none;
-
+    z-index:20;
 }
-
 
 </style>
 
 </head>
-
 
 <body>
 
 
 <h1>PESACASH</h1>
 
-<p>Spin gurudumu lako kupata zawadi</p>
-
+<p>Spin the wheel and try your luck</p>
 
 
 <div class="wheel-wrapper">
-
 
 <div class="pointer"></div>
 
 
 <div class="wheel" id="wheel">
 
-<div class="amount amount1">KSh 1,000</div>
-
-<div class="amount amount2">KSh 2,000</div>
-
-<div class="amount amount3">KSh 3,000</div>
-
-<div class="amount amount4">KSh 4,000</div>
-
-<div class="amount amount5">KSh 5,000</div>
-
-<div class="amount amount6">TRY AGAIN</div>
-
-
-</div>
-
+<div class="amount a1">KSh 300</div>
+<div class="amount a2">KSh 500</div>
+<div class="amount a3">KSh 800</div>
+<div class="amount a4">KSh 1,000</div>
+<div class="amount a5">KSh 1,500</div>
+<div class="amount a6">KSh 2,000</div>
+<div class="amount a7">KSh 2,500</div>
+<div class="amount a8">KSh 3,000</div>
+<div class="amount a9">KSh 3,500</div>
+<div class="amount a10">KSh 4,000</div>
+<div class="amount a11">KSh 4,500</div>
+<div class="amount a12">KSh 5,000</div>
 
 </div>
 
+</div>
 
 
 <button onclick="spin()">SPIN NOW</button>
 
 
-<div class="result" id="result">
+<div class="popup" id="popup">
+🎉 Congratulations!<br><br>
+You have won KSh 2,000!
 </div>
-
 
 
 <script>
 
-
 let wheel=document.getElementById("wheel");
-
-let result=document.getElementById("result");
+let popup=document.getElementById("popup");
 
 
 function spin(){
 
+    // Always lands on KSh 2,000
+    let rotation = 360 * 6 + 165;
 
-let rotation = 360 * 5 + 90;
-
-
-wheel.style.transform="rotate("+rotation+"deg)";
-
+    wheel.style.transform="rotate("+rotation+"deg)";
 
 
-setTimeout(function(){
+    setTimeout(function(){
 
+        popup.style.display="block";
 
-result.style.display="block";
-
-result.innerHTML="🎉 Hongera! Umeshinda KSh 2,000";
-
-
-},5000);
-
-
+    },5000);
 
 }
-
 
 </script>
 
 
 </body>
-
 </html>
