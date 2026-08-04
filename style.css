@@ -13,52 +13,56 @@ body {
 .container {
     width: 100%;
     max-width: 500px;
-    margin: 0 auto;
+    margin: auto;
     padding: 10px;
 }
 
 /* Caption */
 .caption {
     text-align: center;
-    padding: 15px 15px;
+    padding: 12px 15px 15px;
 }
 
 .caption h1 {
-    font-size: 34px;
+    font-size: 32px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin: 0 0 8px;
+    letter-spacing: 1px;
+    margin: 0 0 6px;
 }
 
 .caption h2 {
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 800;
-    line-height: 1.3;
-    margin: 0 0 10px;
+    line-height: 1.35;
+    margin: 0 0 8px;
 }
 
 .caption p {
     font-size: 16px;
     font-weight: 600;
-    line-height: 1.5;
-    margin: 0 0 15px;
+    line-height: 1.45;
+    margin: 0 0 12px;
 }
 
-/* Video Section */
+
+/* Video */
 .video-container {
     position: relative;
     width: 100%;
-    border-radius: 12px;
+    height: 260px;
+    border-radius: 14px;
     overflow: hidden;
+    background: #111;
 }
 
 video {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
     object-fit: contain;
+    display: block;
 }
+
 
 /* Play Button */
 .play-overlay {
@@ -69,19 +73,21 @@ video {
 }
 
 .play-overlay button {
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     border: none;
-    background: rgba(255,255,255,0.9);
-    font-size: 30px;
+    background: white;
+    color: black;
+    font-size: 28px;
     cursor: pointer;
 }
+
 
 /* Comments */
 .comments-box {
     margin-top: 15px;
-    height: 160px;
+    height: 150px;
     overflow: hidden;
     position: relative;
 }
@@ -89,43 +95,55 @@ video {
 .comments {
     position: absolute;
     width: 100%;
-    animation: scrollComments 12s linear infinite;
+    animation: moveComments 15s linear infinite;
 }
 
 .comments p {
-    background: rgba(255,255,255,0.1);
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 8px;
-    font-size: 15px;
+    background: rgba(255,255,255,0.12);
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
-@keyframes scrollComments {
-    from {
+
+/* Smooth upward movement */
+@keyframes moveComments {
+
+    0% {
         transform: translateY(100%);
     }
-    to {
+
+    100% {
         transform: translateY(-100%);
     }
+
 }
 
-/* Mobile adjustments */
-@media (max-width: 500px) {
+
+/* Mobile */
+@media(max-width:500px){
 
     .caption h1 {
-        font-size: 30px;
+        font-size: 28px;
     }
 
     .caption h2 {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .caption p {
-        font-size: 15px;
+        font-size: 14px;
+    }
+
+    .video-container {
+        height: 240px;
     }
 
     .play-overlay button {
-        width: 60px;
-        height: 60px;
+        width: 58px;
+        height: 58px;
+        font-size: 25px;
     }
 }
