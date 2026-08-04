@@ -6,7 +6,6 @@
 <title>PESACASH Spin Wheel</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -73,21 +72,22 @@ h1{
     transition:transform 5s cubic-bezier(.17,.67,.25,1);
 
     background:conic-gradient(
-    #16a34a 0deg 30deg,
-    #facc15 30deg 60deg,
-    #2563eb 60deg 90deg,
-    #f97316 90deg 120deg,
-    #9333ea 120deg 150deg,
-    #dc2626 150deg 180deg,
-    #14b8a6 180deg 210deg,
-    #ec4899 210deg 240deg,
-    #84cc16 240deg 270deg,
-    #0ea5e9 270deg 300deg,
-    #f97316 300deg 330deg,
-    #8b5cf6 330deg 360deg
+        #16a34a 0deg 30deg,
+        #facc15 30deg 60deg,
+        #2563eb 60deg 90deg,
+        #f97316 90deg 120deg,
+        #9333ea 120deg 150deg,
+        #dc2626 150deg 180deg,
+        #14b8a6 180deg 210deg,
+        #ec4899 210deg 240deg,
+        #84cc16 240deg 270deg,
+        #0ea5e9 270deg 300deg,
+        #f97316 300deg 330deg,
+        #8b5cf6 330deg 360deg
     );
 }
-    .amount{
+
+.amount{
     position:absolute;
     width:100%;
     height:100%;
@@ -97,7 +97,7 @@ h1{
     padding-top:18px;
     font-size:13px;
     font-weight:bold;
-    color:white;
+    color:#fff;
     text-shadow:1px 1px 3px #000;
 }
 
@@ -149,8 +149,28 @@ h1{
 
 .popup-box h2{
     margin-bottom:12px;
-    color:#
-   <body>
+    color:#16a34a;
+}
+
+.popup-box p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.continue-btn{
+    background:#00c853;
+    color:#fff;
+    border:none;
+    padding:14px 35px;
+    border-radius:40px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+</style>
+</head>
+<body>
 
 <div class="container">
 
@@ -165,8 +185,7 @@ Spin the wheel for your chance to win exciting cash rewards up to KSh 5,000.
 <div class="pointer"></div>
 
 <div class="wheel" id="wheel">
-
-<div class="amount a1">KSh 300</div>
+    <div class="amount a1">KSh 300</div>
 <div class="amount a2">KSh 500</div>
 <div class="amount a3">KSh 800</div>
 <div class="amount a4">KSh 1,000</div>
@@ -189,20 +208,22 @@ SPIN NOW
 
 <div class="popup" id="popup">
 
-<div class="popup-box">
+    <div class="popup-box">
 
-<h2>🎉 Congratulations!</h2>
+        <h2>🎉 Congratulations!</h2>
 
-<p id="winText"></p>
+        <p id="winText"></p>
 
-<button class="continue-btn" onclick="window.location.href='nextpage.html'">
-CONTINUE
-</button>
+        <button class="continue-btn"
+            onclick="window.location.href='nextpage.html'">
+            CONTINUE
+        </button>
+
+    </div>
 
 </div>
 
-</div> 
-    <script>
+<script>
 
 const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spinBtn");
@@ -226,40 +247,4 @@ const prizes = [
 
 let currentRotation = 0;
 let spinning = false;
-
-spinBtn.addEventListener("click", function(){
-
-    if(spinning) return;
-
-    spinning = true;
-    popup.style.display = "none";
-
-    // Random prize (0-11)
-    const prizeIndex = Math.floor(Math.random() * 12);
-
-    // Each section is 30 degrees
-    const sectionAngle = 30;
-
-    // Calculate angle so pointer lands in the center of the chosen section
-    const targetAngle = (prizeIndex * sectionAngle) + 15;
-
-    currentRotation += 360 * 6 + (360 - targetAngle);
-
-    wheel.style.transform = "rotate(" + currentRotation + "deg)";
-
-    setTimeout(function(){
-
-        winText.textContent = "You have won " + prizes[prizeIndex] + "!";
-
-        popup.style.display = "flex";
-
-        spinning = false;
-
-    }, 5000);
-
-});
-
-</script>
-
-</body>
-</html>
+    
