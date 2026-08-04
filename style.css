@@ -5,145 +5,103 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     background: #000;
-    color: #fff;
+    font-family: Arial, sans-serif;
+    color: white;
 }
 
 .container {
     width: 100%;
-    max-width: 500px;
-    margin: auto;
-    padding: 10px;
+    padding: 15px;
 }
 
-/* Caption */
+/* Caption area */
 .caption {
     text-align: center;
-    padding: 12px 15px 15px;
+    margin-bottom: 15px;
 }
 
 .caption h1 {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 6px;
-}
-
-.caption h2 {
-    font-size: 21px;
-    font-weight: 800;
-    line-height: 1.35;
     margin: 0 0 8px;
 }
 
 .caption p {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.45;
-    margin: 0 0 12px;
+    font-size: 18px;
+    margin: 0;
 }
-
 
 /* Video */
 .video-container {
-    position: relative;
     width: 100%;
-    height: 260px;
-    border-radius: 14px;
+    height: 330px;
+    border-radius: 25px;
     overflow: hidden;
     background: #111;
 }
 
-video {
+.video-container video {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    display: block;
+    object-fit: cover;
 }
 
-
-/* Play Button */
-.play-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.play-overlay button {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
+/* Start spinning button */
+.spin-btn {
+    width: 100%;
+    height: 85px;
+    margin-top: 18px;
     border: none;
-    background: white;
-    color: black;
-    font-size: 28px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #00c853, #16e65b);
+    color: white;
+    font-size: 27px;
+    font-weight: 700;
+    font-family: 'Comic Sans MS', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     cursor: pointer;
+    box-shadow:
+        0 8px 25px rgba(0,255,80,0.45),
+        inset 0 -5px 10px rgba(0,0,0,0.15);
 }
 
+.spin-btn::before {
+    content: "🎯";
+    font-size: 38px;
+}
 
-/* Comments */
+.spin-btn:active {
+    transform: scale(0.97);
+}
+
+/* Moving comments */
 .comments-box {
-    margin-top: 15px;
-    height: 150px;
+    margin-top: 10px;
+    height: 70px;
     overflow: hidden;
-    position: relative;
 }
 
 .comments {
-    position: absolute;
-    width: 100%;
-    animation: moveComments 15s linear infinite;
+    animation: moveComments 12s linear infinite;
 }
 
 .comments p {
-    background: rgba(255,255,255,0.12);
-    padding: 8px 12px;
-    margin: 5px 0;
-    border-radius: 10px;
-    font-size: 14px;
+    font-size: 17px;
+    margin: 8px 0;
+    color: #111;
     font-weight: 600;
 }
 
-
-/* Smooth upward movement */
 @keyframes moveComments {
-
-    0% {
-        transform: translateY(100%);
+    from {
+        transform: translateY(60px);
     }
 
-    100% {
-        transform: translateY(-100%);
-    }
-
-}
-
-
-/* Mobile */
-@media(max-width:500px){
-
-    .caption h1 {
-        font-size: 28px;
-    }
-
-    .caption h2 {
-        font-size: 19px;
-    }
-
-    .caption p {
-        font-size: 14px;
-    }
-
-    .video-container {
-        height: 240px;
-    }
-
-    .play-overlay button {
-        width: 58px;
-        height: 58px;
-        font-size: 25px;
+    to {
+        transform: translateY(-120px);
     }
 }
