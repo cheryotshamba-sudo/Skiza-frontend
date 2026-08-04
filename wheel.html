@@ -51,14 +51,14 @@ h1{
 
 .pointer{
     position:absolute;
-    top:-8px;
+    top:-10px;
     left:50%;
     transform:translateX(-50%);
     width:0;
     height:0;
     border-left:18px solid transparent;
     border-right:18px solid transparent;
-    border-top:35px solid red;
+    border-top:35px solid #ef4444;
     z-index:20;
 }
 
@@ -67,8 +67,8 @@ h1{
     height:340px;
     border-radius:50%;
     border:8px solid #fff;
-    position:relative;
     overflow:hidden;
+    position:relative;
     transition:transform 5s cubic-bezier(.17,.67,.25,1);
 
     background:conic-gradient(
@@ -95,9 +95,9 @@ h1{
     justify-content:center;
     align-items:flex-start;
     padding-top:18px;
+    color:#fff;
     font-size:13px;
     font-weight:bold;
-    color:#fff;
     text-shadow:1px 1px 3px #000;
 }
 
@@ -119,7 +119,7 @@ h1{
     background:#00c853;
     color:#fff;
     border:none;
-    padding:16px 45px;
+    padding:16px 48px;
     font-size:22px;
     font-weight:900;
     border-radius:50px;
@@ -130,10 +130,10 @@ h1{
 .popup{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.65);
     display:none;
     justify-content:center;
     align-items:center;
+    background:rgba(0,0,0,.7);
     z-index:100;
 }
 
@@ -148,8 +148,8 @@ h1{
 }
 
 .popup-box h2{
-    margin-bottom:12px;
     color:#16a34a;
+    margin-bottom:12px;
 }
 
 .popup-box p{
@@ -167,8 +167,8 @@ h1{
     font-weight:bold;
     cursor:pointer;
 }
-
 </style>
+
 </head>
 <body>
 
@@ -199,52 +199,52 @@ Spin the wheel for your chance to win exciting cash rewards up to KSh 5,000.
 <div class="amount a12">KSh 5,000</div>
 
 </div>
-
 </div>
 
 <button class="spin-btn" id="spinBtn">
-SPIN NOW
+    SPIN NOW
 </button>
 
 <div class="popup" id="popup">
-
     <div class="popup-box">
 
         <h2>🎉 Congratulations!</h2>
 
-        <p id="winText"></p>
+        <
+           spinBtn.addEventListener("click", function () {
 
-        <button class="continue-btn"
-            onclick="window.location.href='nextpage.html'">
-            CONTINUE
-        </button>
+    if (spinning) return;
 
-    </div>
+    spinning = true;
+    popup.style.display = "none";
 
-</div>
+    // Pick a random prize
+    const prizeIndex = Math.floor(Math.random() * prizes.length);
 
-<script>
+    // Each slice is 30°
+    const sectionAngle = 30;
 
-const wheel = document.getElementById("wheel");
-const spinBtn = document.getElementById("spinBtn");
-const popup = document.getElementById("popup");
-const winText = document.getElementById("winText");
+    // Center the chosen slice under the pointer
+    const targetAngle = (prizeIndex * sectionAngle) + 15;
 
-const prizes = [
-    "KSh 300",
-    "KSh 500",
-    "KSh 800",
-    "KSh 1,000",
-    "KSh 1,500",
-    "KSh 2,000",
-    "KSh 2,500",
-    "KSh 3,000",
-    "KSh 3,500",
-    "KSh 4,000",
-    "KSh 4,500",
-    "KSh 5,000"
-];
+    // Spin 6 full turns, then land on the selected prize
+    currentRotation += (360 * 6) + (360 - targetAngle);
 
-let currentRotation = 0;
-let spinning = false;
-    
+    wheel.style.transform = "rotate(" + currentRotation + "deg)";
+
+    setTimeout(function () {
+
+        winText.textContent =
+            "Congratulations! You have won " + prizes[prizeIndex] + ".";
+
+        popup.style.display = "flex";
+        spinning = false;
+
+    }, 5000);
+
+});
+
+</script>
+
+</body>
+            </html> 
