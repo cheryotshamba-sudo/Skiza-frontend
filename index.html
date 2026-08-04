@@ -17,13 +17,15 @@
     <h1>Fursa Maalum Inakusubiri</h1>
 
     <p class="subtitle">
-        Tazama video hii ili kuendelea
+        Tazama video hii ili kuendelea na kupata nafasi yako
     </p>
+
 
     <div class="video-box">
 
         <video id="promoVideo" playsinline>
             <source src="video.mp4" type="video/mp4">
+            Browser yako haitumii video
         </video>
 
         <div id="playOverlay">
@@ -33,7 +35,7 @@
     </div>
 
 
-    <button id="continueBtn" style="display:none;">
+    <button id="continueBtn">
         START SPINNING NOW
     </button>
 
@@ -42,12 +44,20 @@
 
         <div class="comments">
 
-            <p>🔥 Amina: Nimefanikiwa kupata zawadi yangu leo</p>
-            <p>🎉 Brian: Hii ni rahisi sana, nimejaribu na imefanya kazi</p>
-            <p>👏 Mary: Asante sana, nimefurahia fursa hii</p>
-            <p>💰 Kevin: Nimepata nafasi yangu, jaribuni pia</p>
-            <p>⭐ Jane: Video imenisaidia kuelewa kila kitu</p>
-            <p>🚀 Peter: Fursa nzuri sana kwa kila mtu</p>
+            <p>Sarah: Nimepata KSh 3,000, asante sana</p>
+            <p>Kevin: Nimepata KSh 1,000, nimefurahi sana</p>
+            <p>Mary: Nimefanikiwa kupata KSh 2,500 leo</p>
+            <p>Brian: Asante, nimepata KSh 5,000</p>
+            <p>Jane: Nimepokea yangu, hatua zilikuwa rahisi</p>
+            <p>Peter: Nimefurahia fursa hii sana</p>
+            <p>Lucy: Nimepata KSh 4,000, asante sana</p>
+            <p>David: Nimefanikiwa kupata KSh 2,000 leo</p>
+            <p>Ann: Nimepata KSh 5,000, nimefurahi sana</p>
+            <p>Michael: Nimepokea KSh 1,500, asante</p>
+            <p>Grace: Nimepata nafasi yangu leo</p>
+            <p>John: Nimefanikiwa kupata KSh 3,500</p>
+            <p>Esther: Nimepata KSh 2,000, asante sana</p>
+            <p>Samuel: Nimepokea yangu bila shida</p>
 
         </div>
 
@@ -60,9 +70,28 @@
 <script>
 
 const video = document.getElementById("promoVideo");
-const playOverlay = document.getElementById("playOverlay");
 const playBtn = document.getElementById("playBtn");
+const playOverlay = document.getElementById("playOverlay");
 const continueBtn = document.getElementById("continueBtn");
 
 
-playBtn.onclick =
+playBtn.onclick = function(){
+
+    video.play();
+    video.muted = false;
+    playOverlay.style.display = "none";
+
+};
+
+
+continueBtn.onclick = function(){
+
+    window.location.href = "spin.html";
+
+};
+
+</script>
+
+
+</body>
+</html>
