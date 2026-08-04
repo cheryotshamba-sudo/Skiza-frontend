@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PesaCash Spin Wheel</title>
+<title>PESACASH Spin Wheel</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -16,54 +16,63 @@
 
 body{
     background:#0f172a;
-    color:white;
-    text-align:center;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
     padding:20px;
 }
 
+.container{
+    width:100%;
+    max-width:420px;
+    text-align:center;
+}
+
 h1{
-    margin-top:20px;
-    font-size:32px;
+    font-size:36px;
     font-weight:900;
+    margin-bottom:10px;
 }
 
-p{
-    margin-top:10px;
-    color:#cbd5e1;
+.caption{
+    color:#d1d5db;
+    font-size:17px;
+    line-height:1.5;
+    margin-bottom:30px;
 }
 
-
-.wheel-wrapper{
+.wheel-container{
     position:relative;
-    width:330px;
-    height:330px;
-    margin:40px auto;
+    width:340px;
+    height:340px;
+    margin:auto;
 }
-
 
 .pointer{
+    position:absolute;
+    top:-8px;
+    left:50%;
+    transform:translateX(-50%);
     width:0;
     height:0;
     border-left:18px solid transparent;
     border-right:18px solid transparent;
     border-top:35px solid red;
-    position:absolute;
-    top:-12px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:5;
+    z-index:20;
 }
 
-
 .wheel{
-    width:330px;
-    height:330px;
+    width:340px;
+    height:340px;
     border-radius:50%;
-    border:8px solid white;
+    border:8px solid #fff;
     position:relative;
+    overflow:hidden;
+    transition:transform 5s cubic-bezier(.17,.67,.25,1);
 
-    background:
-    conic-gradient(
+    background:conic-gradient(
     #16a34a 0deg 30deg,
     #facc15 30deg 60deg,
     #2563eb 60deg 90deg,
@@ -71,31 +80,26 @@ p{
     #9333ea 120deg 150deg,
     #dc2626 150deg 180deg,
     #14b8a6 180deg 210deg,
-    #e11d48 210deg 240deg,
+    #ec4899 210deg 240deg,
     #84cc16 240deg 270deg,
     #0ea5e9 270deg 300deg,
-    #f43f5e 300deg 330deg,
-    #a855f7 330deg 360deg
+    #f97316 300deg 330deg,
+    #8b5cf6 330deg 360deg
     );
-
-    transition:transform 5s cubic-bezier(.17,.67,.83,.67);
 }
-
-
-.amount{
+    .amount{
     position:absolute;
     width:100%;
     height:100%;
     display:flex;
     justify-content:center;
     align-items:flex-start;
-    padding-top:35px;
-    font-size:14px;
-    font-weight:900;
+    padding-top:18px;
+    font-size:13px;
+    font-weight:bold;
     color:white;
-    text-shadow:1px 1px 3px black;
+    text-shadow:1px 1px 3px #000;
 }
-
 
 .a1{transform:rotate(15deg);}
 .a2{transform:rotate(45deg);}
@@ -110,55 +114,55 @@ p{
 .a11{transform:rotate(315deg);}
 .a12{transform:rotate(345deg);}
 
-
-button{
+.spin-btn{
+    margin-top:35px;
     background:#00c853;
-    color:white;
+    color:#fff;
     border:none;
     padding:16px 45px;
     font-size:22px;
     font-weight:900;
     border-radius:50px;
     cursor:pointer;
-    box-shadow:0 0 15px #00c853;
+    box-shadow:0 0 18px rgba(0,200,83,.7);
 }
-
-
-/* Winner popup */
 
 .popup{
     position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    background:white;
-    color:#111;
-    width:85%;
-    max-width:350px;
-    padding:35px 20px;
-    border-radius:20px;
-    font-size:26px;
-    font-weight:900;
+    inset:0;
+    background:rgba(0,0,0,.65);
     display:none;
-    z-index:20;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
 }
 
-</style>
+.popup-box{
+    background:#fff;
+    color:#111827;
+    width:90%;
+    max-width:340px;
+    padding:30px 20px;
+    border-radius:18px;
+    text-align:center;
+}
 
-</head>
+.popup-box h2{
+    margin-bottom:12px;
+    color:#
+   <body>
 
-<body>
-
+<div class="container">
 
 <h1>PESACASH</h1>
 
-<p>Spin the wheel and try your luck</p>
+<p class="caption">
+Spin the wheel for your chance to win exciting cash rewards up to KSh 5,000.
+</p>
 
-
-<div class="wheel-wrapper">
+<div class="wheel-container">
 
 <div class="pointer"></div>
-
 
 <div class="wheel" id="wheel">
 
@@ -179,40 +183,83 @@ button{
 
 </div>
 
-
-<button onclick="spin()">SPIN NOW</button>
-
+<button class="spin-btn" id="spinBtn">
+SPIN NOW
+</button>
 
 <div class="popup" id="popup">
-🎉 Congratulations!<br><br>
-You have won KSh 2,000!
+
+<div class="popup-box">
+
+<h2>🎉 Congratulations!</h2>
+
+<p id="winText"></p>
+
+<button class="continue-btn" onclick="window.location.href='nextpage.html'">
+CONTINUE
+</button>
+
 </div>
 
+</div> 
+    <script>
 
-<script>
+const wheel = document.getElementById("wheel");
+const spinBtn = document.getElementById("spinBtn");
+const popup = document.getElementById("popup");
+const winText = document.getElementById("winText");
 
-let wheel=document.getElementById("wheel");
-let popup=document.getElementById("popup");
+const prizes = [
+    "KSh 300",
+    "KSh 500",
+    "KSh 800",
+    "KSh 1,000",
+    "KSh 1,500",
+    "KSh 2,000",
+    "KSh 2,500",
+    "KSh 3,000",
+    "KSh 3,500",
+    "KSh 4,000",
+    "KSh 4,500",
+    "KSh 5,000"
+];
 
+let currentRotation = 0;
+let spinning = false;
 
-function spin(){
+spinBtn.addEventListener("click", function(){
 
-    // Always lands on KSh 2,000
-    let rotation = 360 * 6 + 165;
+    if(spinning) return;
 
-    wheel.style.transform="rotate("+rotation+"deg)";
+    spinning = true;
+    popup.style.display = "none";
 
+    // Random prize (0-11)
+    const prizeIndex = Math.floor(Math.random() * 12);
+
+    // Each section is 30 degrees
+    const sectionAngle = 30;
+
+    // Calculate angle so pointer lands in the center of the chosen section
+    const targetAngle = (prizeIndex * sectionAngle) + 15;
+
+    currentRotation += 360 * 6 + (360 - targetAngle);
+
+    wheel.style.transform = "rotate(" + currentRotation + "deg)";
 
     setTimeout(function(){
 
-        popup.style.display="block";
+        winText.textContent = "You have won " + prizes[prizeIndex] + "!";
 
-    },5000);
+        popup.style.display = "flex";
 
-}
+        spinning = false;
+
+    }, 5000);
+
+});
 
 </script>
-
 
 </body>
 </html>
