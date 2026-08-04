@@ -6,97 +6,85 @@
 
 html,body{
     width:100%;
-    height:100%;
-    overflow:hidden;
+    min-height:100%;
     font-family:Arial,sans-serif;
-    background:#000;
+    background:#111;
+    overflow-x:hidden;
+}
+
+/* Video Section */
+
+.video-container{
+    position:relative;
+    width:100%;
+    padding:15px;
+    background:#111;
 }
 
 #promoVideo{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    object-fit:cover;
-}
-
-.overlay{
-    position:fixed;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    align-items:center;
-    padding:20px;
-    background:linear-gradient(to top,rgba(0,0,0,.7),rgba(0,0,0,.2),transparent);
-}
-
-.logo{
-    position:absolute;
-    top:25px;
-    font-size:30px;
-    font-weight:bold;
-    color:#fff;
-}
-
-h1{
-    color:#fff;
-    text-align:center;
-    font-size:32px;
-    margin-bottom:15px;
-}
-
-.subtitle{
-    color:#fff;
-    text-align:center;
-    font-size:18px;
-    margin-bottom:25px;
-}
-
-.start-btn{
-    width:90%;
-    max-width:400px;
-    padding:18px;
-    border:none;
-    border-radius:50px;
-    background:#16a34a;
-    color:#fff;
-    font-size:24px;
-    font-weight:bold;
-    cursor:pointer;
-    margin-bottom:20px;
-}
-#playOverlay{
-    position:fixed;
-    top:0;
-    left:0;
     width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.45);
+    height:320px;
+    object-fit:cover;
+    border-radius:22px;
+    display:block;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+/* Play Overlay */
+
+#playOverlay{
+    position:absolute;
+    inset:15px;
+    border-radius:22px;
+    background:rgba(0,0,0,.45);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    z-index:9999;
 }
 
 #playBtn{
-    width:100px;
-    height:100px;
+    width:90px;
+    height:90px;
     border:none;
     border-radius:50%;
-    background:#ffffff;
+    background:#fff;
     color:#16a34a;
-    font-size:48px;
-    font-weight:bold;
+    font-size:42px;
     cursor:pointer;
+    transition:.3s;
+}
+
+#playBtn:hover{
+    transform:scale(1.08);
 }
 
 #playOverlay p{
-    margin-top:20px;
-    color:#ffffff;
+    margin-top:15px;
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* Bottom Section */
+
+.bottom-section{
+    padding:20px 18px 30px;
+}
+
+.start-btn{
+    width:100%;
+    border:none;
+    border-radius:50px;
+    padding:18px;
     font-size:22px;
     font-weight:bold;
-    text-align:center;
-    }
+    color:#fff;
+    cursor:pointer;
+    background:linear-gradient(90deg,#16a34a,#22c55e);
+    box-shadow:0 8px 25px rgba(34,197,94,.4);
+    transition:.3s;
+}
+
+.start-btn:hover{
+   
