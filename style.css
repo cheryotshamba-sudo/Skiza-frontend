@@ -91,9 +91,9 @@ body {
     box-shadow: 0 15px 35px rgba(0,0,0,0.45);
 }
 
-.video-container video {
+.video-container {
     width: 100%;
-    height: 100%;
+    height: 210px;
     object-fit: contain;
     border-radius: 22px;
     background: #000;
@@ -103,7 +103,8 @@ body {
 .spin-btn {
     width: 100%;
     height: 85px;
-    margin-top: 35px;
+    .spin-btn {
+    margin-top: 15px; 
     border: none;
     border-radius: 50px;
     background: linear-gradient(90deg,#00c853,#00e676);
