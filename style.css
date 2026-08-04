@@ -99,7 +99,6 @@ body {
     content: "🎯";
     font-size: 35px;
 }
-/* Comments */
 .comments-box {
     margin-top: 20px;
     background: #030712;
@@ -110,7 +109,7 @@ body {
 }
 
 .comments {
-    animation: moveComments 18s linear infinite;
+    animation: moveComments 28s linear infinite;
 }
 
 .comments p {
@@ -121,14 +120,13 @@ body {
 
 @keyframes moveComments {
     from {
-        transform: translateY(120px);
+        transform: translateY(0);
     }
 
     to {
-        transform: translateY(-250px);
+        transform: translateY(-50%);
     }
 }
-
 /* Video Play Icon */
 .video-container {
     position: relative;
