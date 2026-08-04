@@ -243,6 +243,7 @@ const prizes = [
 
 let currentRotation = 0;
 let spinning = false;
+let prizeIndex = 0;
 
 spinBtn.addEventListener("click", function () {
 
@@ -251,7 +252,7 @@ spinBtn.addEventListener("click", function () {
     spinning = true;
     popup.style.display = "none";
 
-    const prizeIndex = Math.floor(Math.random() * prizes.length);
+    prizeIndex = Math.floor(Math.random() * prizes.length);
 
     currentRotation += (360 * 6) + (prizeIndex * 30) + 15;
 
@@ -259,17 +260,31 @@ spinBtn.addEventListener("click", function () {
     wheel.style.transform = `rotate(${currentRotation}deg)`;
 
     setTimeout(function () {
-        winText.textContent = "Congratulations! You have won " + prizes[prizeIndex] + "!";
+
+        winText.textContent =
+            "Congratulations! You have won " + prizes[prizeIndex] + "!";
+
         popup.style.display = "flex";
         spinning = false;
+
     }, 5000);
 
 });
+
+
 function goToResult() {
+
     localStorage.setItem("winningAmount", prizes[prizeIndex]);
+
     window.location.href = "result.html";
-    }
+
+}
+
 </script>
+
+
+    
+
 
 </body>
 </html>
