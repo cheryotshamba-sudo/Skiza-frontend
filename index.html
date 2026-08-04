@@ -8,28 +8,36 @@
 </head>
 <body>
 
-<video id="promoVideo" playsinline>
-    <source src="video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+<div class="video-container">
 
-<div id="playOverlay">
-    <button id="playBtn">▶</button>
-    <p>Bonyeza Play Kutazama Video</p>
+    <video id="promoVideo" playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="playOverlay">
+        <button id="playBtn">▶</button>
+        <p>Tap Play to Watch Video</p>
+    </div>
+
 </div>
 
-<div class="overlay">
-    <div class="logo">Pesa Link</div>
-
-    <h1>Hatua Moja Tu Inakutenganisha na KSh 5,000!</h1>
-
-    <p class="subtitle">
-        Tazama video yote kisha bonyeza <strong>START NOW</strong>.
-    </p>
+<div class="bottom-section">
 
     <button class="start-btn" onclick="startNow()">
-        START NOW
+        🎯 Start Spinning Now
     </button>
+
+    <div class="live-box">
+        <p id="liveText">
+            🔥 1,254 Kenyans have already spun today.
+        </p>
+    </div>
+
+    <p class="terms">
+        Limited offer for Kenyan users. Terms apply.
+    </p>
+
 </div>
 
 <script src="script.js"></script>
