@@ -1,57 +1,106 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesa Link</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pesa Link</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-<div class="container">
+<div class="video-container">
 
-    <div class="card">
+    <video id="promoVideo" playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support video.
+    </video>
 
-        <div class="video-container">
-
-            <div class="video-title">
-                Hatua Moja Tu Inakutenganisha na KSh 5,000!
-            </div>
-
-            <video id="promoVideo" playsinline>
-                <source src="video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-
-            <div id="playOverlay">
-                <button id="playBtn">▶</button>
-            </div>
-
-        </div>
-
-        <button class="start-btn" onclick="startNow()">
-            🎯 Start Spinning Now
-        </button>
-
-        <div class="live-box">
-            <div class="comments-track">
-                <p>🔥 James kutoka Nairobi amepokea KSh 5,000.</p>
-                <p>🔥 Mercy kutoka Kisumu amepokea KSh 5,000.</p>
-                <p>🔥 Brian kutoka Nakuru amepokea KSh 5,000.</p>
-                <p>🔥 Faith kutoka Eldoret amepokea KSh 5,000.</p>
-                <p>🔥 Kevin kutoka Mombasa amepokea KSh 5,000.</p>
-            </div>
-        </div>
-
-        <p class="terms">
-            Limited offer for Kenyan users. Terms apply.
-        </p>
-
+    <!-- Play Icon -->
+    <div id="playOverlay">
+        <button id="playBtn">▶</button>
     </div>
+
+
+    <!-- Video Title -->
+    <div class="video-title">
+        Fursa ya Kupata KSh 1,000
+    </div>
+
+
+    <!-- Live Comments -->
+    <div class="comments-box" id="commentsBox"></div>
+
 
 </div>
 
-<script src="script.js"></script>
+
+<script>
+
+const video = document.getElementById("promoVideo");
+const playBtn = document.getElementById("playBtn");
+const playOverlay = document.getElementById("playOverlay");
+
+
+playBtn.addEventListener("click", () => {
+
+    video.muted = false;
+    video.volume = 1;
+
+    video.play();
+
+    playOverlay.style.display = "none";
+
+});
+
+
+// Live comments moving bottom to top
+
+const comments = [
+    "Nimefanikiwa kupata KSh 1,000",
+    "Hii ni kweli nimepokea yangu",
+    "Asante sana Pesa Link",
+    "Nimejaribu na imefanya kazi",
+    "Fursa nzuri sana",
+    "Nimepata zawadi yangu leo",
+    "Hakuna malipo nimefurahi"
+];
+
+
+const box = document.getElementById("commentsBox");
+
+
+function showComment(){
+
+    const comment = document.createElement("div");
+
+    comment.className = "comment";
+
+    comment.innerText = comments[
+        Math.floor(Math.random()*comments.length)
+    ];
+
+
+    box.appendChild(comment);
+
+
+    setTimeout(()=>{
+
+        comment.remove();
+
+    },5000);
+
+}
+
+
+setInterval(showComment,2500);
+
+
+</script>
+
 
 </body>
 </html>
