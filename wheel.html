@@ -218,24 +218,19 @@ Spin the wheel for your chance to win exciting cash rewards up to KSh 5,000.
     spinning = true;
     popup.style.display = "none";
 
-    // Pick a random prize
     const prizeIndex = Math.floor(Math.random() * prizes.length);
 
-    // Each slice is 30°
-    const sectionAngle = 30;
+    const degrees = (360 * 6) + (prizeIndex * 30) + 15;
 
-    // Center the chosen slice under the pointer
-    const targetAngle = (prizeIndex * sectionAngle) + 15;
+    currentRotation += degrees;
 
-    // Spin 6 full turns, then land on the selected prize
-    currentRotation += (360 * 6) + (360 - targetAngle);
-
-    wheel.style.transform = "rotate(" + currentRotation + "deg)";
+    wheel.style.transition = "transform 5s ease-out";
+    wheel.style.transform = `rotate(${currentRotation}deg)`;
 
     setTimeout(function () {
 
         winText.textContent =
-            "Congratulations! You have won " + prizes[prizeIndex] + ".";
+            "Congratulations! You have won " + prizes[prizeIndex] + "!";
 
         popup.style.display = "flex";
         spinning = false;
@@ -247,4 +242,4 @@ Spin the wheel for your chance to win exciting cash rewards up to KSh 5,000.
 </script>
 
 </body>
-            </html> 
+</html>
