@@ -38,9 +38,13 @@ body {
     margin: 10px 0 15px;
 }
 .caption p {
-    margin-top: 5px;
     font-size: 18px;
-    color: #ddd;
+    font-weight: 500;
+    color: #d1d5db;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 90%;
+    margin: 0 auto 25px;
 }
 
 /* Stats */
