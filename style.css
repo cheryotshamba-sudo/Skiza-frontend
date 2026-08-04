@@ -29,7 +29,14 @@ body {
     color: #ffffff;
     margin-bottom: 15px;
 }
-
+.caption h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.3;
+    margin: 10px 0 15px;
+}
 .caption p {
     margin-top: 5px;
     font-size: 18px;
