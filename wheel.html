@@ -204,14 +204,47 @@ Spin the wheel for your chance to win exciting cash rewards up to KSh 5,000.
 <button class="spin-btn" id="spinBtn">
     SPIN NOW
 </button>
-
 <div class="popup" id="popup">
     <div class="popup-box">
 
         <h2>🎉 Congratulations!</h2>
 
-        <
-           spinBtn.addEventListener("click", function () {
+        <p id="winText"></p>
+
+        <button class="continue-btn"
+            onclick="window.location.href='result.html'">
+            CONTINUE
+        </button>
+
+    </div>
+</div>
+
+<script>
+
+const wheel = document.getElementById("wheel");
+const spinBtn = document.getElementById("spinBtn");
+const popup = document.getElementById("popup");
+const winText = document.getElementById("winText");
+
+const prizes = [
+    "KSh 300",
+    "KSh 500",
+    "KSh 800",
+    "KSh 1,000",
+    "KSh 1,500",
+    "KSh 2,000",
+    "KSh 2,500",
+    "KSh 3,000",
+    "KSh 3,500",
+    "KSh 4,000",
+    "KSh 4,500",
+    "KSh 5,000"
+];
+
+let currentRotation = 0;
+let spinning = false;
+
+spinBtn.addEventListener("click", function () {
 
     if (spinning) return;
 
@@ -220,21 +253,15 @@ Spin the wheel for your chance to win exciting cash rewards up to KSh 5,000.
 
     const prizeIndex = Math.floor(Math.random() * prizes.length);
 
-    const degrees = (360 * 6) + (prizeIndex * 30) + 15;
-
-    currentRotation += degrees;
+    currentRotation += (360 * 6) + (prizeIndex * 30) + 15;
 
     wheel.style.transition = "transform 5s ease-out";
     wheel.style.transform = `rotate(${currentRotation}deg)`;
 
     setTimeout(function () {
-
-        winText.textContent =
-            "Congratulations! You have won " + prizes[prizeIndex] + "!";
-
+        winText.textContent = "Congratulations! You have won " + prizes[prizeIndex] + "!";
         popup.style.display = "flex";
         spinning = false;
-
     }, 5000);
 
 });
