@@ -245,3 +245,32 @@ body {
     margin:15px 0;
     color:white;
     }
+.winner{
+    text-align:center;
+    padding:35px 25px;
+}
+
+.winner .icon{
+    font-size:70px;
+    margin-bottom:15px;
+}
+
+.winner h1{
+    font-size:36px;
+    margin:10px 0;
+    font-weight:900;
+}
+
+.winner p{
+    font-size:20px;
+    color:#e5e7eb;
+    margin-top:10px;
+}
+
+.winner h2{
+    font-size:18px;
+    color:#9ca3af;
+    margin-top:18px;
+    font-weight:normal;
+    line-height:1.6;
+}
