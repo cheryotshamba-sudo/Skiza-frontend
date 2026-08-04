@@ -113,7 +113,7 @@ KSh 300
 
 <input type="tel" placeholder="Enter Safaricom number (07...)">
 
-<button onclick="window.location.href='next.html'">
+<button onclick="requestWithdrawal()">
     Request Withdrawal
 </button>
 
@@ -164,6 +164,26 @@ if(amount){
 }
 
 </script>
+<script>
 
+function requestWithdrawal(){
+
+    const phone = document.querySelector("input[type='tel']").value;
+
+    if(phone.trim() === ""){
+        alert("Please enter your Safaricom number first.");
+        return;
+    }
+
+    if(!phone.startsWith("07") || phone.length !== 10){
+        alert("Please enter a valid Safaricom number (07xxxxxxxx).");
+        return;
+    }
+
+    window.location.href = "next.html";
+
+}
+
+</script>
 </body>
 </html>
