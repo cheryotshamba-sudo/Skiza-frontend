@@ -199,3 +199,45 @@ object-fit:cover;
 .upload-info{
 padding:18px;
 }
+.welcome{
+margin-bottom:30px;
+}
+
+.welcome h1{
+font-size:32px;
+font-weight:700;
+margin-bottom:8px;
+}
+
+.welcome p{
+color:#666;
+margin-bottom:20px;
+}
+
+.quick-info{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.info-box{
+background:#fff;
+padding:20px;
+border-radius:16px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.info-box h4{
+margin-bottom:10px;
+color:#444;
+}
+
+.info-box p{
+font-size:16px;
+font-weight:600;
+margin:0;
+}
+
+.online{
+color:#10b981;
+  }
