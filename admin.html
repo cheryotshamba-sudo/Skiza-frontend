@@ -8,58 +8,164 @@
 
 <link rel="stylesheet" href="admin.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
 
-<div class="container">
+<div class="sidebar">
 
-<header>
+<div class="logo">
 
-<h1>📊 Skiza Admin Dashboard</h1>
+<h2>SKIZA</h2>
 
-<button id="logoutBtn">Logout</button>
+<p>Admin Panel</p>
+
+</div>
+
+<ul>
+
+<li class="active">
+<i class="fas fa-home"></i>
+<span>Dashboard</span>
+</li>
+
+<li>
+<i class="fas fa-images"></i>
+<span>Uploads</span>
+</li>
+
+<li>
+<i class="fas fa-chart-line"></i>
+<span>Analytics</span>
+</li>
+
+<li>
+<i class="fas fa-gear"></i>
+<span>Settings</span>
+</li>
+
+</ul>
+
+<button id="logoutBtn" class="logout">
+
+<i class="fas fa-right-from-bracket"></i>
+
+Logout
+
+</button>
+
+</div>
+
+
+
+<div class="main-content">
+
+<header class="topbar">
+
+<div>
+
+<h1>Welcome Back 👋</h1>
+
+<p>Skiza Admin Dashboard</p>
+
+</div>
+
+<button class="refresh">
+
+<i class="fas fa-rotate-right"></i>
+
+Refresh
+
+</button>
 
 </header>
 
 
-<div class="stats-grid">
 
+<div class="stats">
 
-<div class="dashboard-card">
+<div class="card blue">
 
-<h3>📸 Total Uploads</h3>
+<div>
 
-<p id="totalUploads">Loading...</p>
+<h3>Total Uploads</h3>
+
+<h2 id="totalUploads">0</h2>
+
+</div>
+
+<i class="fas fa-images"></i>
 
 </div>
 
 
 
-<div class="dashboard-card">
+<div class="card green">
 
-<h3>🟢 Backend Status</h3>
+<div>
 
-<p>Online</p>
+<h3>Today</h3>
+
+<h2 id="todayUploads">0</h2>
+
+</div>
+
+<i class="fas fa-calendar"></i>
 
 </div>
 
 
 
-<div class="dashboard-card">
+<div class="card orange">
 
-<h3>☁️ Cloudinary</h3>
+<div>
 
-<p>Connected</p>
+<h3>This Week</h3>
+
+<h2 id="weekUploads">0</h2>
+
+</div>
+
+<i class="fas fa-chart-column"></i>
 
 </div>
 
 
+
+<div class="card red">
+
+<div>
+
+<h3>Status</h3>
+
+<h2>Online</h2>
+
+</div>
+
+<i class="fas fa-server"></i>
+
+</div>
+
 </div>
 
 
 
-<h2>Uploaded Screenshots</h2>
+<div class="gallery-header">
+
+<h2>Latest Uploads</h2>
+
+<input
+type="text"
+id="search"
+placeholder="Search screenshots...">
+
+</div>
+
 
 
 <div id="gallery" class="gallery">
@@ -68,11 +174,10 @@ Loading screenshots...
 
 </div>
 
-
 </div>
-
 
 <script src="admin.js"></script>
 
 </body>
+
 </html>
