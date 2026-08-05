@@ -16,17 +16,22 @@ document.getElementById("refreshBtn").addEventListener("click", loadDashboard);
 
 async function loadDashboard() {
 
-    // Statistics
     try {
-        const stats = await fetch("https://skiza-backend.onrender.com/stats-details")
-            .then(r => r.json());
 
-        document.getElementById("todayUploads").textContent = stats.todayUploads || 0;
-document.getElementById("weekUploads").textContent = stats.weekUploads || 0;
-document.getElementById("weekUploads").textContent = stats.weekUploads || 0;
-    } catch (err) {
-        console.error(err);
-    }
+    const stats = await fetch("https://skiza-backend.onrender.com/stats-details")
+        .then(r => r.json());
+
+    document.getElementById("todayUploads").textContent = stats.todayUploads || 0;
+    document.getElementById("weekUploads").textContent = stats.weekUploads || 0;
+
+    const total = await fetch("https://skiza-backend.onrender.com/stats")
+        .then(r => r.json());
+
+    document.getElementById("totalUploads").textContent = total.totalUploads || 0;
+
+} catch (err) {
+    console.error(err);
+}
 
     // Uploads
     try {
