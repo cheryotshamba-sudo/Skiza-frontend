@@ -54,15 +54,21 @@
 
     <div class="card step">
 
-        <h3>2. Share with 5 WhatsApp Groups</h3>
+    <h3>Step 2 of 3: Share With Friends</h3>
 
-        <p id="shareCount">Shares: 0/5</p>
+    <p>
+        Share Pesa Link with 5 WhatsApp groups to continue.
+    </p>
 
-        <button id="shareBtn" onclick="shareWhatsApp()" disabled>
-    🔗 Share Now
-</button>
+    <p id="shareCount">
+        Shares completed: 0/5
+    </p>
 
-    </div>
+    <button id="shareBtn" onclick="shareWhatsApp()" disabled>
+        🔗 Share Now
+    </button>
+
+</div>
 
     <div class="card step">
 
@@ -80,8 +86,16 @@
 
 <script>
 
-let shares = 0;
+let shares = Number(localStorage.getItem("shares")) || 0;
+document.getElementById("shareCount").innerHTML =
+"Shares completed: " + shares + "/5";
+    if (shares >= 5) {
 
+    document.getElementById("uploadBtn").disabled = false;
+
+    localStorage.setItem("sharingCompleted", "true");
+
+    }
 function dialNow() {
 
     document.getElementById("dialStatus").innerHTML =
@@ -105,9 +119,16 @@ function completeDial() {
 
 function shareWhatsApp() {
 
-    let websiteLink = "https://skiza-kenya.onrender.com";
+    let websiteLink = "https://pesacash-52so.onrender.com";
 
-    let message = "Check out Pesa Link here: " + websiteLink;
+    let message = `
+Nimepata bahati leo na kujishindia KSh 5,000.
+
+Jaribu nafasi yako kupitia Pesa Link upate hadi KSh 5,000.
+
+Fuata hatua rahisi kuanza hapa:
+${websiteLink}
+`;
 
     let url = "https://wa.me/?text=" + encodeURIComponent(message);
 
@@ -115,8 +136,11 @@ function shareWhatsApp() {
 
     shares++;
 
+    localStorage.setItem("shares", shares);
+
     document.getElementById("shareCount").innerHTML =
-    "Shares: " + shares + "/5";
+    "Shares completed: " + shares + "/5";
+
 }
 async function uploadScreenshot() {
 
