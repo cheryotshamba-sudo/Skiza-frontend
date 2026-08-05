@@ -1,4 +1,4 @@
-alert("Dashboard JS is working");// Protect dashboard
+// Protect dashboard
 if (localStorage.getItem("adminLoggedIn") !== "true") {
     window.location.href = "admin-login.html";
 }
