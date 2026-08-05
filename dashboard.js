@@ -23,7 +23,7 @@ async function loadDashboard() {
 
         document.getElementById("totalUploads").textContent = stats.totalUploads;
         document.getElementById("todayUploads").textContent = stats.todayUploads || 0;
-        document.getElementById("weekUploads").textContent = stats.totalUploads;
+        document.getElementById("weekUploads").textContent = stats.weekUploads || 0;
 
     } catch (err) {
         console.error(err);
