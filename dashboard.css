@@ -243,3 +243,46 @@ font-size:28px;
 }
 
 }
+@media (max-width: 768px){
+
+.sidebar{
+    position:relative;
+    width:100%;
+    height:auto;
+    padding:15px;
+}
+
+.logo{
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+.sidebar ul{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+}
+
+.sidebar ul li{
+    width:45%;
+    justify-content:center;
+    margin:0;
+}
+
+.main{
+    margin-left:0;
+    width:100%;
+    padding:20px;
+}
+
+.topbar{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+}
+
+.cards{
+    grid-template-columns:1fr;
+}
+  }
