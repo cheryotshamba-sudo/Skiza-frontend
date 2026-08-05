@@ -98,11 +98,11 @@ async function loadDashboard() {
                 try {
 
                     const res = await fetch(
-                       `https://skiza-backend.onrender.com/uploads/${upload.id}`
-                        {
-                            method: "DELETE"
-                        }
-                    );
+    `https://skiza-backend.onrender.com/uploads/${upload._id}`,
+    {
+        method: "DELETE"
+    }
+);
 
                     if (res.ok) {
                         card.remove();
