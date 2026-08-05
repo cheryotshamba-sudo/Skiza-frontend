@@ -288,9 +288,11 @@ background:#cbd5e1;
 border-radius:20px;
 }
 
-/* Mobile */
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
 
-@media(max-width:768px){
+@media (max-width:768px){
 
 body{
 display:block;
@@ -301,34 +303,94 @@ display:block;
 }
 
 .sidebar{
+position:fixed;
+top:0;
 left:-270px;
 width:260px;
 height:100vh;
+background:#0f172a;
+padding:25px;
+transition:.3s;
+z-index:1000;
 }
 
 .sidebar.show{
-left:
-    <div class="quickActions">
+left:0;
+}
 
-<button id="refreshBtn">
-<i class="fas fa-rotate"></i>
-Refresh
-</button>
+.logo{
+margin-bottom:30px;
+}
 
-<button id="exportBtn">
-<i class="fas fa-file-csv"></i>
-Export CSV
-</button>
+.sidebar ul{
+display:block;
+}
 
-<button id="deleteSelectedBtn">
-<i class="fas fa-trash"></i>
-Delete Selected
-</button>
+.sidebar li{
+width:100%;
+margin-bottom:10px;
+}
 
-<button id="deleteAllBtn">
-<i class="fas fa-trash-can"></i>
-Delete All
-</button>
+.main{
+margin-left:0;
+width:100%;
+padding:18px;
+}
 
-</div>
+.topbar{
+flex-wrap:wrap;
+gap:15px;
+}
+
+.topbar h1{
+font-size:28px;
+}
+
+#refreshBtn{
+width:100%;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.quickActions{
+display:flex;
+flex-direction:column;
+gap:12px;
+margin-bottom:25px;
+}
+
+.quickActions button{
+width:100%;
+}
+
+.filters{
+flex-direction:column;
+}
+
+.filters input,
+.filters select{
+width:100%;
+}
+
+.uploadsHeader{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.upload-card img{
+height:220px;
+}
+
+.actions{
+flex-direction:column;
+}
+
+}
     
