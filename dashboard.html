@@ -10,8 +10,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
@@ -20,11 +19,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <div class="sidebar">
 
 <div class="logo">
-
 <i class="fas fa-chart-line"></i>
-
 <h2>SKIZA</h2>
-
 </div>
 
 <ul>
@@ -62,20 +58,18 @@ Logout
 
 <div class="topbar">
 
+<button class="menuBtn" id="menuBtn">
+<i class="fas fa-bars"></i>
+</button>
+
 <div>
-
 <h1>Welcome back 👋</h1>
-
 <p>Skiza Admin Dashboard</p>
-
 </div>
 
 <button id="refreshBtn">
-
 <i class="fas fa-rotate"></i>
-
 Refresh
-
 </button>
 
 </div>
@@ -83,48 +77,93 @@ Refresh
 <div class="cards">
 
 <div class="card green">
-
 <h3>Total Uploads</h3>
-
 <h1 id="totalUploads">0</h1>
-
+<p>All uploads</p>
 </div>
 
 <div class="card blue">
-
 <h3>Today</h3>
-
 <h1 id="todayUploads">0</h1>
-
+<p>Today's uploads</p>
 </div>
 
 <div class="card orange">
-
 <h3>This Week</h3>
-
 <h1 id="weekUploads">0</h1>
-
+<p>Last 7 days</p>
 </div>
 
 <div class="card purple">
+<h3>This Month</h3>
+<h1 id="monthUploads">0</h1>
+<p>Current month</p>
+</div>
 
-<h3>Status</h3>
+<div class="card red">
+<h3>Failed</h3>
+<h1 id="failedUploads">0</h1>
+<p>Failed uploads</p>
+</div>
 
-<h1>Online</h1>
+<div class="card cyan">
+<h3>Last Upload</h3>
+<h1 id="lastUpload">--</h1>
+<p>Latest activity</p>
+</div>
 
+<div class="card dark">
+<h3>Server</h3>
+<h1 id="serverStatus">Online</h1>
+<p>Backend status</p>
+</div>
+
+<div class="card gold">
+<h3>Storage</h3>
+<h1 id="storageUsed">0 MB</h1>
+<p>Cloud storage</p>
 </div>
 
 </div>
+
+<div class="filters">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search name or phone">
+
+<input
+type="date"
+id="dateFilter">
+
+<select id="statusFilter">
+
+<option value="">All Uploads</option>
+
+<option value="success">Successful</option>
+
+<option value="failed">Failed</option>
+
+</select>
+
+</div>
+
+<div class="uploadsHeader">
 
 <h2 class="sectionTitle">
-
 Latest Uploads
-
 </h2>
+
+<span id="liveCounter">
+🔴 Live Updates
+</span>
+
+</div>
 
 <div id="gallery" class="gallery">
 
-Loading...
+Loading uploads...
 
 </div>
 
@@ -133,4 +172,4 @@ Loading...
 <script src="dashboard.js"></script>
 
 </body>
-  </html>
+</html>
