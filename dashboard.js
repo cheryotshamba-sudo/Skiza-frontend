@@ -5,48 +5,40 @@ if (localStorage.getItem("adminLoggedIn") !== "true") {
 
 // Logout
 document.getElementById("logoutBtn").addEventListener("click", () => {
-    localStorage.removeItem("adminLoggedIn");
-    window.location.href = "admin-login.html";
+    if (confirm("Logout from dashboard?")) {
+        localStorage.removeItem("adminLoggedIn");
+        window.location.href = "admin-login.html";
+    }
 });
 
-// Refresh button
-document.getElementById("refreshBtn").addEventListener("click", () => {
-    loadDashboard();
-});
+// Refresh
+document.getElementById("refreshBtn").addEventListener("click", loadDashboard);
 
-// Load dashboard
 async function loadDashboard() {
 
-    // Load statistics
+    // Statistics
     try {
-
-        const statsResponse = await fetch("https://skiza-backend.onrender.com/stats");
-        const stats = await statsResponse.json();
+        const stats = await fetch("https://skiza-backend.onrender.com/stats")
+            .then(r => r.json());
 
         document.getElementById("totalUploads").textContent = stats.totalUploads;
-
-        // Temporary values until we build analytics
         document.getElementById("todayUploads").textContent = stats.totalUploads;
         document.getElementById("weekUploads").textContent = stats.totalUploads;
 
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
+        console.error(err);
     }
 
-    // Load uploads
+    // Uploads
     try {
 
-        const uploadsResponse = await fetch("https://skiza-backend.onrender.com/uploads");
-        const uploads = await uploadsResponse.json();
+        const uploads = await fetch("https://skiza-backend.onrender.com/uploads")
+            .then(r => r.json());
 
         const gallery = document.getElementById("gallery");
 
-        if (uploads.length === 0) {
-            gallery.innerHTML = `
-                <h3 style="text-align:center;color:gray;">
-                    No screenshots uploaded yet.
-                </h3>
-            `;
+        if (!uploads.length) {
+            gallery.innerHTML = "<h3>No screenshots uploaded.</h3>";
             return;
         }
 
@@ -54,50 +46,81 @@ async function loadDashboard() {
 
         uploads.forEach(upload => {
 
-            gallery.innerHTML += `
-                <div class="upload-card">
+            const card = document.createElement("div");
+            card.className = "upload-card";
 
-                    <img src="${upload.imageUrl}" alt="Screenshot">
+            card.innerHTML = `
+                <img src="${upload.imageUrl}" alt="Screenshot">
 
-                    <div class="upload-info">
+                <div class="upload-info">
 
-                        <strong>${upload.filename}</strong>
+                    <strong>${upload.filename}</strong>
 
-                        <p>
-                        ${new Date(upload.uploadedAt).toLocaleString()}
-                        </p>
+                    <p>${new Date(upload.uploadedAt).toLocaleString()}</p>
 
-                        <div class="actions">
+                    <div class="actions">
 
-                            <button class="view"
-                            onclick="window.open('${upload.imageUrl}')">
-                            View
-                            </button>
+                        <button class="view">👁 View</button>
 
-                            <button class="download"
-                            onclick="window.open('${upload.imageUrl}')">
-                            Download
-                            </button>
+                        <button class="download">⬇ Download</button>
 
-                            <button class="delete">
-                            Delete
-                            </button>
-
-                        </div>
+                        <button class="delete">🗑 Delete</button>
 
                     </div>
 
                 </div>
             `;
 
+            // View
+            card.querySelector(".view").onclick = () => {
+                window.open(upload.imageUrl, "_blank");
+            };
+
+            // Download
+            card.querySelector(".download").onclick = () => {
+                const a = document.createElement("a");
+                a.href = upload.imageUrl;
+                a.download = upload.filename;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            };
+
+            // Delete
+            card.querySelector(".delete").onclick = async () => {
+
+                if (!confirm(`Delete ${upload.filename}?`)) return;
+
+                try {
+
+                    const res = await fetch(
+                        `https://skiza-backend.onrender.com/uploads/${upload.id}`,
+                        {
+                            method: "DELETE"
+                        }
+                    );
+
+                    if (res.ok) {
+                        card.remove();
+                        loadDashboard();
+                    } else {
+                        alert("Delete failed.");
+                    }
+
+                } catch (err) {
+                    alert("Server error.");
+                    console.error(err);
+                }
+
+            };
+
+            gallery.appendChild(card);
+
         });
 
-    } catch (error) {
-
-        console.log(error);
-
+    } catch (err) {
+        console.error(err);
     }
-
 }
 
 loadDashboard();
