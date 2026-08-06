@@ -29,3 +29,30 @@ setInterval(()=>{
     i=(i+1)%activities.length;
     liveText.textContent=activities[i];
 },4000);
+// Dial Now button - maximum 3 clicks
+let dialClicks = 0;
+
+const dialBtn = document.getElementById("dialBtn");
+
+if(dialBtn){
+
+    dialBtn.addEventListener("click", () => {
+
+        if(dialClicks < 3){
+
+            dialClicks++;
+
+            window.location.href = "tel:*123#"; // replace with your dial code
+
+        } else {
+
+            alert("Dial step completed. Continue to the next step.");
+
+            dialBtn.disabled = true;
+            dialBtn.innerText = "Dial Completed";
+
+        }
+
+    });
+
+}
