@@ -54,7 +54,8 @@
 </div>
 
 <script>
-
+localStorage.removeItem("dialCompleted");
+localStorage.removeItem("dialClicks");
 // If Step 1 is already complete, go straight to Step 2
 if (localStorage.getItem("dialCompleted") === "true") {
     window.location.href = "share.html";
