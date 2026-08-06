@@ -183,7 +183,11 @@ function requestWithdrawal(){
     window.location.href = "next.html";
 
 }
+history.pushState(null, "", location.href);
 
+window.addEventListener("popstate", function () {
+    history.pushState(null, "", location.href);
+});
 </script>
 </body>
 </html>
