@@ -43,17 +43,57 @@ const uploadBtn = document.getElementById("uploadBtn");
 const uploadStatus = document.getElementById("uploadStatus");
 
 
-uploadBtn.onclick = function(){
+uploadBtn.onclick = async function(){
 
     if(!screenshot.files[0]){
 
         alert("Please select a screenshot first.");
-
         return;
 
     }
 
     uploadStatus.innerHTML = "Uploading screenshot...";
+
+    let formData = new FormData();
+
+    formData.append("image", screenshot.files[0]);
+
+
+    try {
+
+        let response = await fetch(
+            "https://skiza-backend.onrender.com/upload",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+
+        let data = await response.json();
+
+
+        if(response.ok){
+
+            uploadStatus.innerHTML =
+            "✅ Screenshot uploaded successfully!";
+
+        } else {
+
+            uploadStatus.innerHTML =
+            "❌ Upload failed.";
+
+        }
+
+
+    } catch(error){
+
+        console.log(error);
+
+        uploadStatus.innerHTML =
+        "❌ Error uploading screenshot.";
+
+    }
 
 };
 
