@@ -245,48 +245,102 @@ let currentRotation = 0;
 let spinning = false;
 let prizeIndex = 0;
 
-spinBtn.addEventListener("click", function () {
 
-    if (spinning) return;
+// Check if already played
+if(localStorage.getItem("wheelPlayed") === "true"){
+    spinBtn.disabled = true;
+    spinBtn.textContent = "ALREADY SPUN";
+}
+
+
+spinBtn.addEventListener("click", function(){
+
+    if(spinning) return;
+
 
     spinning = true;
+
     popup.style.display = "none";
 
+    spinBtn.textContent = "SPINNING...";
+    spinBtn.style.opacity = "0.6";
+
+
+    // Select winning prize
     prizeIndex = Math.floor(Math.random() * prizes.length);
 
-let stopAngle = (360 - (prizeIndex * 30)) - 15;
 
-currentRotation += (360 * 6) + stopAngle;
+    // Calculate stopping angle
+    let stopAngle = (360 - (prizeIndex * 30)) - 15;
 
-    wheel.style.transition = "transform 5s ease-out";
+
+    // Spin 6 full rounds + stop position
+    currentRotation += (360 * 6) + stopAngle;
+
+
+    wheel.style.transition = "transform 5s cubic-bezier(.17,.67,.25,1)";
     wheel.style.transform = `rotate(${currentRotation}deg)`;
 
-    setTimeout(function () {
+
+    setTimeout(function(){
+
+
+        // Save result
+        localStorage.setItem(
+            "winningAmount",
+            prizes[prizeIndex]
+        );
+
+
+        localStorage.setItem(
+            "wheelPlayed",
+            "true"
+        );
+
 
         winText.textContent =
-            "Congratulations! You have won " + prizes[prizeIndex] + "!";
+        "Congratulations! You have won " + prizes[prizeIndex] + "!";
+
 
         popup.style.display = "flex";
+
+
         spinning = false;
 
-    }, 5000);
+        spinBtn.style.opacity = "1";
+
+        spinBtn.disabled = true;
+
+        spinBtn.textContent = "COMPLETED";
+
+
+    },5000);
+
 
 });
 
 
-function goToResult() {
+function goToResult(){
 
-    localStorage.setItem("winningAmount", prizes[prizeIndex]);
-
-    window.location.replace("result.html");
+    window.location.href = "result.html";
 
 }
+
+
+// Prevent returning back to wheel
 history.pushState(null, "", location.href);
 
-window.addEventListener("popstate", function () {
+window.addEventListener("popstate", function(){
+
     history.pushState(null, "", location.href);
+
 });
+
+
 </script>
+
+
+    
 
 
     
