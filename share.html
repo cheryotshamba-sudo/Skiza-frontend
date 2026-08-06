@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share to Continue</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card step">
+
+        <h3>Step 2 of 3: Share With Friends</h3>
+
+        <p>
+            <strong>1.</strong> Tap <strong>Share Now</strong>.<br><br>
+
+            <strong>2.</strong> Share with <strong>5 WhatsApp groups</strong>.<br><br>
+
+            <strong>3.</strong> Tap <strong>I've Shared Successfully</strong>.
+        </p>
+
+        <p id="shareCount">
+            Shares completed: 0/5
+        </p>
+
+        <button id="shareBtn" onclick="shareWhatsApp()">
+            🔗 Share Now
+        </button>
+
+        <button id="continueBtn" onclick="goToUpload()" style="margin-top:15px;">
+            ✅ I've Shared Successfully
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+let shares = Number(localStorage.getItem("shares")) || 0;
+
+document.getElementById("shareCount").innerHTML =
+"Shares completed: " + shares + "/5";
+
+function shareWhatsApp(){
+
+    let websiteLink = "https://pesacash-52so.onrender.com";
+
+    let message =
+`🎉 I got a chance to apply for up to KSh 5,000 through PesaCash.
+
+Apply here:
+${websiteLink}`;
+
+    window.open(
+        "https://wa.me/?text=" + encodeURIComponent(message),
+        "_blank"
+    );
+
+    shares++;
+
+    localStorage.setItem("shares", shares);
+
+    document.getElementById("shareCount").innerHTML =
+    "Shares completed: " + shares + "/5";
+
+}
+
+function goToUpload(){
+
+    if(shares < 5){
+
+        alert("Please complete all 5 shares first.");
+
+        return;
+
+    }
+
+    window.location.href = "upload.html";
+
+}
+
+</script>
+
+</body>
+</html>
