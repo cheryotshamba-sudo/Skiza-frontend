@@ -207,7 +207,13 @@ background:linear-gradient(135deg,#111827,#374151);
 .gold{
 background:linear-gradient(135deg,#d97706,#fbbf24);
 }
-
+.card i{
+position:absolute;
+top:18px;
+right:18px;
+font-size:28px;
+opacity:0.25;
+}
 /* Filters */
 
 .filters{
