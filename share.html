@@ -49,7 +49,9 @@ let shares = Number(localStorage.getItem("shares")) || 0;
 
 document.getElementById("shareCount").innerHTML =
 "Shares completed: " + shares + "/5";
-
+if(shares >= 5){
+    document.getElementById("continueBtn").disabled = false;
+}
 function shareWhatsApp(){
 
     let websiteLink = "https://pesacash-52so.onrender.com/?v=2";
