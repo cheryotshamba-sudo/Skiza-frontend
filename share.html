@@ -74,9 +74,12 @@ function updateShareCount(){
 
     if(shares >= 5){
 
-        document.getElementById("continueBtn").disabled = false;
+    document.getElementById("continueBtn").disabled = false;
 
-    }
+    document.getElementById("shareCount").innerHTML =
+    "🎉 Shares completed: 5/5 - You can continue now.";
+
+}
 
 }
 
