@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Share to Continue</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -25,58 +28,84 @@
             <strong>3.</strong> Tap <strong>I've Shared Successfully</strong>.
         </p>
 
+
         <p id="shareCount">
             Shares completed: 0/5
         </p>
 
 
-<button id="shareBtn" onclick="shareWhatsApp()">
-    🔗 Share Now
-</button>
-        
+        <button id="shareBtn" onclick="shareWhatsApp()">
+            🔗 Share Now
+        </button>
+
 
         <button id="continueBtn" onclick="goToUpload()" disabled style="margin-top:15px;">
-    ✅ I've Shared Successfully
-</button>
+            ✅ I've Shared Successfully
+        </button>
+
 
     </div>
 
 </div>
 
+
 <script>
 
 let shares = Number(localStorage.getItem("shares")) || 0;
 
-document.getElementById("shareCount").innerHTML =
-"Shares completed: " + shares + "/5";
-if(shares >= 5){
-    document.getElementById("continueBtn").disabled = false;
+
+function updateShareCount(){
+
+    document.getElementById("shareCount").innerHTML =
+    "Shares completed: " + shares + "/5";
+
+
+    if(shares >= 5){
+
+        document.getElementById("continueBtn").disabled = false;
+
+    }
+
 }
+
+
+updateShareCount();
+
+
+
 function shareWhatsApp(){
 
     let websiteLink = "https://pesacash-52so.onrender.com/?v=2";
 
+
     let message =
 `Alafu umejaribu hii form ya PesaCash? 👀
+
 Ni BURE na process ni rahisi ✅
-Hii staki ikupite  ni kama tu ile tulikuliaga na akina Fay 🙌
+
+Hii staki ikupite 😅🔥 ni kama tu ile tulikuliaga na akina Fay 🙌
 
 JARIBU UONE:
 ${websiteLink}`;
+
 
     window.open(
         "https://wa.me/?text=" + encodeURIComponent(message),
         "_blank"
     );
 
+
     shares++;
+
 
     localStorage.setItem("shares", shares);
 
-    document.getElementById("shareCount").innerHTML =
-    "Shares completed: " + shares + "/5";
+
+    updateShareCount();
 
 }
+
+
 
 function goToUpload(){
 
@@ -88,11 +117,14 @@ function goToUpload(){
 
     }
 
-    window.location.href = "upload.html";
+
+    window.location.replace("upload.html");
 
 }
 
+
 </script>
+
 
 </body>
 </html>
