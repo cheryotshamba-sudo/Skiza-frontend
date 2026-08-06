@@ -248,8 +248,15 @@ let prizeIndex = 0;
 
 // Check if already played
 if(localStorage.getItem("wheelPlayed") === "true"){
-    spinBtn.disabled = true;
-    spinBtn.textContent = "ALREADY SPUN";
+
+    spinBtn.textContent = "VIEW RESULT";
+
+    spinBtn.disabled = false;
+
+    spinBtn.onclick = function(){
+        window.location.href = "result.html";
+    };
+
 }
 
 
