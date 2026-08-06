@@ -30,10 +30,17 @@ E<head>
 
     <div class="video-container">
 
-        <video id="promoVideo" playsinline>
-            <source src="video.mp4" type="video/mp4">
-            Browser yako haitumii video
-        </video>
+        <video
+    id="promoVideo"
+    playsinline
+    preload="auto"
+    muted
+    poster="video-poster.jpg">
+
+    <source src="video.mp4" type="video/mp4">
+    Browser yako haitumii video
+
+</video>
 
         <div class="play-overlay" id="playOverlay">
             <button id="playBtn">▶</button>
@@ -92,6 +99,7 @@ E<head>
 <script>
 
 const video = document.getElementById("promoVideo");
+    video.load();
 const playBtn = document.getElementById("playBtn");
 const playOverlay = document.getElementById("playOverlay");
 
