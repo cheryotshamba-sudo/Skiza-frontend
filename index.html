@@ -124,7 +124,11 @@ continueBtn.onclick = function(){
     window.location.href = "wheel.html";
 
 };
+history.pushState(null, "", location.href);
 
+window.addEventListener("popstate", function () {
+    history.pushState(null, "", location.href);
+});
 </script>
 
 
