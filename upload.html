@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -11,95 +12,220 @@
 
 </head>
 
+
 <body>
 
 <div class="container">
 
     <div class="card step">
 
-        <h3>Step 3 of 3: Upload Confirmation Screenshot</h3>
+        <h3>🎉 Final Step: Confirm Your Application</h3>
+
 
         <p>
             📸 Upload the screenshot you received from Skiza after completing the process.
         </p>
 
-        <input type="file" id="screenshot" accept="image/*">
+
+        <div style="
+        background:#f8f9fa;
+        padding:15px;
+        border-radius:10px;
+        margin:15px 0;
+        color:#333;
+        ">
+
+            <strong>Your screenshot should show:</strong><br><br>
+
+            ✅ Skiza confirmation message<br>
+            ✅ Successful completion message<br>
+            ✅ Clear readable details<br><br>
+
+            ❌ Do not upload blank or unrelated images.
+
+        </div>
+
+
+        <input 
+        type="file" 
+        id="screenshot"
+        accept="image/*"
+        >
+
+
+        <br><br>
+
+
+        <img 
+        id="preview"
+        style="
+        width:100%;
+        max-width:300px;
+        display:none;
+        border-radius:10px;
+        margin-bottom:15px;
+        "
+        >
+
 
         <button id="uploadBtn">
+
             📤 Upload Screenshot
+
         </button>
 
-        <p id="uploadStatus"></p>
+
+        <p id="uploadStatus" style="margin-top:15px;"></p>
+
 
     </div>
 
 </div>
 
 
+
 <script>
 
+
 const screenshot = document.getElementById("screenshot");
+
+const preview = document.getElementById("preview");
+
 const uploadBtn = document.getElementById("uploadBtn");
+
 const uploadStatus = document.getElementById("uploadStatus");
 
 
-uploadBtn.onclick = async function(){
-
-    if(!screenshot.files[0]){
-
-        alert("Please select a screenshot first.");
-        return;
-
-    }
-
-    uploadStatus.innerHTML = "Uploading screenshot...";
-
-    let formData = new FormData();
-
-    formData.append("screenshot", screenshot.files[0]); 
 
 
-    try {
+// Preview image
 
-        let response = await fetch(
-            "https://skiza-backend.onrender.com/upload",
-            {
-                method: "POST",
-                body: formData
-            }
-        );
+screenshot.onchange = function(){
+
+    const file = screenshot.files[0];
 
 
-        let data = await response.json();
+    if(file){
 
+        preview.src = URL.createObjectURL(file);
 
-        if(response.ok){
-
-            uploadStatus.innerHTML =
-            "✅ Screenshot uploaded successfully!";
-
-        } else {
-
-            uploadStatus.innerHTML =
-            "❌ Upload failed.";
-
-        }
-
-
-    } catch(error){
-
-        console.log(error);
-
-        uploadStatus.innerHTML =
-        "❌ Error uploading screenshot.";
+        preview.style.display = "block";
 
     }
 
 };
 
 
+
+
+// Upload
+
+uploadBtn.onclick = async function(){
+
+
+    if(!screenshot.files[0]){
+
+        alert("Please select your Skiza screenshot first.");
+
+        return;
+
+    }
+
+
+    uploadBtn.disabled = true;
+
+
+    uploadStatus.innerHTML =
+    "⏳ Uploading screenshot... Please wait.";
+
+
+
+    let formData = new FormData();
+
+
+    formData.append(
+        "screenshot",
+        screenshot.files[0]
+    );
+
+
+
+    try{
+
+
+        let response = await fetch(
+
+            "https://skiza-backend.onrender.com/upload",
+
+            {
+
+                method:"POST",
+
+                body:formData
+
+            }
+
+        );
+
+
+
+        let data = await response.json();
+
+
+
+        if(data.success){
+
+
+            uploadStatus.innerHTML =
+            `
+            ✅ Screenshot uploaded successfully!<br><br>
+
+            🎉 Your application is complete.<br>
+            Please wait for confirmation.
+            `;
+
+
+            uploadBtn.innerHTML =
+            "✅ Uploaded";
+
+
+        }else{
+
+
+            uploadStatus.innerHTML =
+            "❌ Upload failed. Please try again.";
+
+
+            uploadBtn.disabled = false;
+
+
+        }
+
+
+
+    }catch(error){
+
+
+        console.log(error);
+
+
+        uploadStatus.innerHTML =
+        "❌ Connection error. Please try again.";
+
+
+        uploadBtn.disabled = false;
+
+
+    }
+
+
+};
+
+
+
 </script>
 
 
 </body>
+
 </html>
