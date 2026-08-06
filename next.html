@@ -54,8 +54,11 @@
 </div>
 
 <script>
-if (localStorage.getItem("dialCompleted") === "true") {
-    window.location.href = "share.html";
+localStorage.setItem("dialCompleted","true");
+
+alert(localStorage.getItem("dialCompleted"));
+
+window.location.href="share.html"; 
 }
 let dialClicks = 0;
 
