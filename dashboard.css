@@ -6,9 +6,9 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#f4f7fc;
+background:#0b1120;
 display:flex;
-color:#222;
+color:#f8fafc;
 }
 
 /* Sidebar */
@@ -75,6 +75,8 @@ background:#22c55e;
 margin-left:260px;
 width:calc(100% - 260px);
 padding:30px;
+background:#0b1120;
+min-height:100vh;
 }
 
 /* Topbar */
@@ -85,6 +87,11 @@ justify-content:space-between;
 align-items:center;
 margin-bottom:30px;
 gap:20px;
+background:#111827;
+padding:20px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
 .menuBtn{
@@ -101,15 +108,24 @@ font-size:20px;
 .topbar h1{
 font-size:34px;
 font-weight:700;
-}
+color:#ffffff;
+} 
 
 .topbar p{
 color:#777;
 margin-top:5px;
 }
-
 #refreshBtn{
-background:#2563eb;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+color:#fff;
+border:none;
+padding:12px 22px;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+box-shadow:0 10px 20px rgba(37,99,235,.3);
+}
+
 color:#fff;
 border:none;
 padding:12px 22px;
@@ -131,7 +147,8 @@ margin-bottom:30px;
 padding:18px;
 border-radius:18px;
 color:#fff;
-box-shadow:0 10px 25px rgba(0,0,0,.12);
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 8px 30px rgba(0,0,0,.35);
 transition:.3s;
 }
 
@@ -209,9 +226,14 @@ display:grid;
 grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
 gap:25px;
 }
-
 .upload-card{
-background:#fff;
+background:#111827;
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 8px 30px rgba(0,0,0,.35);
+transition:.3s;
+}
 border-radius:16px;
 overflow:hidden;
 box-shadow:0 10px 25px rgba(0,0,0,.08);
@@ -232,18 +254,19 @@ background:#eee;
 .upload-info{
 padding:18px;
 }
-
 .upload-info h3{
 font-size:18px;
 margin-bottom:10px;
-color:#111827;
+color:#ffffff;
 }
+
+
 
 .upload-info p{
 font-size:14px;
-color:#6b7280;
+color:#cbd5e1;
 margin:6px 0;
-}
+} 
 
 .actions{
 display:flex;
@@ -359,7 +382,20 @@ font-size:24px;
 font-size:12px;
 }
 
-.quickActions{
+.quickActions button{
+background:#111827;
+color:#fff;
+border:1px solid #334155;
+padding:14px;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+transition:.3s;
+}
+
+.quickActions button:hover{
+background:#2563eb;
+} 
 display:flex;
 flex-direction:column;
 gap:12px;
