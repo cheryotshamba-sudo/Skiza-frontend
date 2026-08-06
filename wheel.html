@@ -278,7 +278,7 @@ function goToResult() {
 
     localStorage.setItem("winningAmount", prizes[prizeIndex]);
 
-    window.location.href = "result.html";
+    window.location.replace("result.html");
 
 }
 history.pushState(null, "", location.href);
