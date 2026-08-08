@@ -94,10 +94,11 @@ body {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: contain;
     border-radius: 22px;
     background: #000;
 }
-
+   
 /* Spin Button */
 
 .spin-btn::before {
@@ -307,8 +308,9 @@ body {
 
 /* Title */
 .caption {
+    width: 100%;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
 }
 
 .caption h1 {
@@ -393,11 +395,10 @@ body {
 .spin-btn {
     width: 100%;
     height: 85px;
-    .spin-btn {
-    margin-top: 15px; 
+    margin-top: 15px;
     border: none;
     border-radius: 50px;
-    background: linear-gradient(90deg,#00c853,#00e676);
+    background: linear-gradient(90deg, #00c853, #00e676);
     color: white;
     font-size: 26px;
     font-weight: bold;
