@@ -12,7 +12,7 @@ body {
 
 .container {
     width: 100%;
-    padding: 12px 20px 20px;
+    padding: 0 20px 20px;
 }
 
 /* Title */
@@ -310,7 +310,7 @@ body {
 .caption {
     width: 100%;
     text-align: center;
-    margin: 0 auto 20px;
+    margin: -5px auto 20px; 
 }
 
 .caption h1 {
@@ -603,5 +603,5 @@ body {
     max-width: 90%;
     height: auto;
     display: block;
-    margin: 0 auto 0; 
+    margin: -10px auto 0; 
 }
