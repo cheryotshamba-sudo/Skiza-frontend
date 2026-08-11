@@ -81,7 +81,7 @@ body {
 /* Video */
 .video-container {
     width: 100%;
-    margin: 8px auto 15px;
+    margin: 0 auto 15px; 
     padding: 10px;
     background: #0f172a;
     border-radius: 30px;
@@ -90,13 +90,13 @@ body {
     box-shadow: 0 15px 35px rgba(0,0,0,0.45);
 }
 
-.video-container video {
+.video-container {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 200px;
     object-fit: contain;
     border-radius: 22px;
     background: #000;
+    margin-top: 0;
 }
    
 /* Spin Button */
@@ -310,7 +310,7 @@ body {
 .caption {
     width: 100%;
     text-align: center;
-    margin: -5px auto 20px; 
+    margin: -5px auto 5px; 
 }
 
 .caption h1 {
@@ -328,7 +328,7 @@ body {
     color: #ffffff;
     text-align: center;
     line-height: 1.2;
-    margin: 6px 0 8px;
+    margin: -10px 0 0; 
 }
 .caption p {
     font-size: 16px; 
@@ -603,5 +603,5 @@ body {
     max-width: 90%;
     height: auto;
     display: block;
-    margin: -10px auto 0; 
+    margin: -35px auto 0; 
 }
